@@ -1,0 +1,255 @@
+﻿@page
+@{
+    Layout = "~/Views/Shared/_Petmanager.cshtml";
+}
+
+
+<style>
+    .container {
+        max-width: 400rem;
+        margin-left: 0px;
+        padding: 0 15px;
+    }
+
+        .container h1 {
+            font-size: 2rem;
+            color: #00291C;
+        }
+
+    /* Increase font size for the card numbers */
+    .card-text {
+        font-size: 2.5rem; /* Adjust as needed */
+        font-weight: bold;
+    }
+
+    /* Color icons black */
+    .card i {
+        color: black;
+        font-size: 2.5rem;
+    }
+
+    .card-body h5 {
+        font-size: 1.5rem;
+    }
+
+    .card-text h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Placeholder styles */
+    .placeholder {
+        background-color: #f4f4f4;
+        height: 600px;
+        border: 1px dashed #ccc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #777;
+    }
+</style>
+
+<div class="container mt-10">
+    <h1 class="text-start mb-4">Dashboard</h1>
+
+    <!-- Cards Section -->
+    <div class="row text-center mb-4">
+        <div class="col-md-3">
+            <div class="card bg-warning text-dark border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Total of pendings</h5>
+                    <h2 class="card-text">Placeholder</h2>
+                    <i class="fa-regular fa-hourglass-half"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-secondary text-white border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">For Interview</h5>
+                    <h2 class="card-text">Placeholder</h2>
+                    <i class="fa-solid fa-clipboard-question"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-success text-white border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Approved</h5>
+                    <h2 class="card-text">Placeholder</h2>
+                    <i class="fa-solid fa-check"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-danger text-white border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Cancelled</h5>
+                    <h2 class="card-text">Placeholder</h2>
+                    <i class="fa-solid fa-x"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-10">
+        <h1 class="text-start mb-4">Adoption Request</h1>
+
+        <!-- Filter Bar Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <!-- Filter Buttons -->
+                <div class="btn-group" role="group" aria-label="Filter Bar" style="background-color: #00291C; border-radius: 15px">
+                    <button type="button" class="btn text-white" style="background-color: #00291C; border: none;">Filter by</button>
+                    <button type="button" class="btn text-white" style="background-color: #00291C; border: none;">Date</button>
+                    <button type="button" class="btn text-white" style="background-color: #00291C; border: none;">Species</button>
+                    <button type="button" class="btn text-white" style="background-color: #00291C; border: none;">Status</button>
+                </div>
+
+                <!-- Search Bar and Button -->
+                <div class="float-end d-flex">
+                    <input type="text" class="form-control" placeholder="Search"
+                           style="border: 1px solid #00291C; border-radius: 15px 0px 0px 15px ; width: 200px;" />
+                    <button class="btn text-white" style="background-color: #00291C; border: none; border-radius: 0px 15px 15px 0px;">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="fs-4 fw-bold">Name</th>
+                            <th scope="col" class="fs-4 fw-bold">Email</th>
+                            <th scope="col" class="fs-4 fw-bold">Phone</th>
+                            <th scope="col" class="fs-4 fw-bold">Date Submitted</th>
+                            <th scope="col" class="fs-4 fw-bold">Pet Name</th>
+                            <th scope="col" class="fs-4 fw-bold">Status</th>
+                            <th scope="col" class="fs-4 fw-bold">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Placeholder rows -->
+                        <tr>
+                            <td>PlaceHolder</td>
+                            <td>Placeholder Date</td>
+                            <td>Placeholder Role</td>
+                            <td>Placeholder Date</td>
+                            <td>Placeholder Role</td>
+                            <td>Placeholder Status</td>
+                            <td>
+                                <!-- Action buttons -->
+                                <button class="btn btn-primary btn-sm mx-1">View</button>
+                                <button class="btn btn-success btn-sm mx-1">Edit</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>PlaceHolder</td>
+                            <td>Placeholder Date</td>
+                            <td>Placeholder Role</td>
+                            <td>Placeholder Date</td>
+                            <td>Placeholder Role</td>
+                            <td>Placeholder Status</td>
+                            <td>
+                                <!-- Action buttons -->
+                                <button class="btn btn-primary btn-sm mx-1">View</button>
+                                <button class="btn btn-success btn-sm mx-1">Edit</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>PlaceHolder</td>
+                            <td>Placeholder Date</td>
+                            <td>Placeholder Role</td>
+                            <td>Placeholder Date</td>
+                            <td>Placeholder Role</td>
+                            <td>Placeholder Status</td>
+                            <td>
+                                <!-- Action buttons -->
+                                <button class="btn btn-primary btn-sm mx-1">View</button>
+                                <button class="btn btn-success btn-sm mx-1">Edit</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>PlaceHolder</td>
+                            <td>Placeholder Date</td>
+                            <td>Placeholder Role</td>
+                            <td>Placeholder Date</td>
+                            <td>Placeholder Role</td>
+                            <td>Placeholder Status</td>
+                            <td>
+                                <!-- Action buttons -->
+                                <button class="btn btn-primary btn-sm mx-1">View</button>
+                                <button class="btn btn-success btn-sm mx-1">Edit</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>PlaceHolder</td>
+                            <td>Placeholder Date</td>
+                            <td>Placeholder Role</td>
+                            <td>Placeholder Date</td>
+                            <td>Placeholder Role</td>
+                            <td>Placeholder Status</td>
+                            <td>
+                                <!-- Action buttons -->
+                                <button class="btn btn-primary btn-sm mx-1">View</button>
+                                <button class="btn btn-success btn-sm mx-1">Edit</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>PlaceHolder</td>
+                            <td>Placeholder Date</td>
+                            <td>Placeholder Role</td>
+                            <td>Placeholder Date</td>
+                            <td>Placeholder Role</td>
+                            <td>Placeholder Status</td>
+                            <td>
+                                <!-- Action buttons -->
+                                <button class="btn btn-primary btn-sm mx-1">View</button>
+                                <button class="btn btn-success btn-sm mx-1">Edit</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>PlaceHolder</td>
+                            <td>Placeholder Date</td>
+                            <td>Placeholder Role</td>
+                            <td>Placeholder Date</td>
+                            <td>Placeholder Role</td>
+                            <td>Placeholder Status</td>
+                            <td>
+                                <!-- Action buttons -->
+                                <button class="btn btn-primary btn-sm mx-1">View</button>
+                                <button class="btn btn-success btn-sm mx-1">Edit</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>PlaceHolder</td>
+                            <td>Placeholder Date</td>
+                            <td>Placeholder Role</td>
+                            <td>Placeholder Date</td>
+                            <td>Placeholder Role</td>
+                            <td>Placeholder Status</td>
+                            <td>
+                                <!-- Action buttons -->
+                                <button class="btn btn-primary btn-sm mx-1">View</button>
+                                <button class="btn btn-success btn-sm mx-1">Edit</button>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>

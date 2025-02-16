@@ -1,0 +1,246 @@
+﻿@model Pet
+
+@{
+
+    Layout = "~/Views/Shared/_PetManager.cshtml";
+}
+<style>
+    .container {
+        max-width: 400rem;
+        margin-left: 0px;
+        padding: 10px 30px;
+    }
+
+        .container h1 {
+            font-size: 2rem;
+            color: #00291C;
+        }
+
+    .card h4 {
+        font-size: 2rem;
+        color: #00291C;
+    }
+
+    .form-container {
+        background-color: #FFFAF2; /* Set form background color */
+        height: 700px; /* Increase height of the form container */
+        padding: 30px 20px; /* Add padding for more space */
+    }
+
+    /* Add outline color and text color for text inputs */
+    .form-control, .form-select {
+        border: 2px solid #687451; /* Apply the outline color */
+        color: #687451; /* Text color */
+    }
+
+    /* Change button color */
+    .btn-success.custom-btn {
+        border: 2px solid #687451; /* Set border color */
+        background-color: #687451; /* Set background color */
+        color: white; /* Text color */
+    }
+
+    .custom-btn:hover {
+        background-color: #565d3a; /* Darker shade of #687451 */
+        border-color: #565d3a;
+        color: white;
+    }
+
+    /* Optional: Style the dashed border for file input container */
+    .custom-border {
+        border-color: #687451 !important; /* Set border color */
+        height: 200px; /* Set height of the file input container */
+        display: flex; /* Use flexbox for centering */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        text-align: center; /* Ensure text is centered */
+    }
+
+        .custom-border label {
+            color: #687451; /* Text color for label */
+
+            height: 100%; /* Ensure it takes full container height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Stack the icon and text vertically */
+            text-align: center; /* Center text */
+        }
+
+        .custom-border input[type="file"] {
+            border: 2px solid #687451 !important; /* Apply border color to the file input */
+            height: 200px; /* Set height of the input field */
+        }
+
+    /* Apply custom styles to the 'Add Pet Details' button */
+    .custom-btn {
+        border: 2px solid #687451;
+        background-color: #687451;
+        color: white;
+    }
+
+        .custom-btn:hover {
+            background-color: #565d3a;
+            border-color: #565d3a;
+            color: white;
+        }
+
+    /* Center the modal vertically and horizontally */
+    .modal-dialog {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh; /* Ensure it's centered within the viewport */
+    }
+
+</style>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center p-4">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="successModalLabel" style="width: 100%; text-align: center;">
+                    <i class="bi bi-check-circle" style="font-size: 2.5rem; color: #28a745;"></i>
+                </h5>
+            </div>
+            <div class="modal-body">
+                <h5 class="text-success mb-3">Add Pet Successfully</h5>
+                <p>The pet details have been added successfully.</p>
+            </div>
+            <div class="modal-footer border-0 justify-content-center">
+                <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Error Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center p-4">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="errorModalLabel" style="width: 100%; text-align: center;">
+                    <i class="bi bi-exclamation-circle" style="font-size: 2.5rem; color: #dc3545;"></i>
+                </h5>
+            </div>
+            <div class="modal-body">
+                <h5 class="text-danger mb-3">Form Validation Error</h5>
+                <p>Please fill out all fields correctly before submitting the form.</p>
+            </div>
+            <div class="modal-footer border-0 justify-content-center">
+                <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h1 class="text-start mb-4">Add Pets</h1>
+    <form id="petForm" enctype="multipart/form-data" novalidate>
+        <div class="card shadow p-4 form-container">
+            <h4 class="text-center mb-3">Input Pet Details</h4>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="Name" class="form-label">Enter Pet Name</label>
+                    <input type="text" class="form-control" name="Name" placeholder="Pet Name" pattern="[A-Za-z\s]+" title="Only alphabets are allowed" required>
+                    <div class="invalid-feedback">Pet name is required and should only contain letters.</div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="Age" class="form-label">Enter Pet Age</label>
+                    <input type="number" class="form-control" name="Age" placeholder="Pet Age" required>
+                    <div class="invalid-feedback">Pet age is required.</div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="Color" class="form-label">Pet Color</label>
+                    <input type="text" class="form-control" name="Color" placeholder="Pet Color" pattern="[A-Za-z\s]+" title="Only alphabets are allowed" required>
+                    <div class="invalid-feedback">Pet color is required and should only contain letters.</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="Species" class="form-label">Species</label>
+                    <input type="text" class="form-control" name="Species" placeholder="Species" pattern="[A-Za-z\s]+" title="Only alphabets are allowed" required>
+                    <div class="invalid-feedback">Species is required and should only contain letters.</div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="Temperament" class="form-label">Temperament</label>
+                    <input type="text" class="form-control" name="Temperament" placeholder="Temperament" pattern="[A-Za-z\s]+" title="Only alphabets are allowed" required>
+                    <div class="invalid-feedback">Temperament is required and should only contain letters.</div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="Weight" class="form-label">Weight (kg)</label>
+                    <input type="number" step="0.1" class="form-control" name="Weight" placeholder="Weight" required>
+                    <div class="invalid-feedback">Weight is required.</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="Vaccinated" class="form-label">Vaccinated?</label>
+                    <select class="form-select" name="Vaccinated" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                    <div class="invalid-feedback">Please select the vaccination status.</div>
+                </div>
+                <div class="col-md-8 mb-3">
+                    <label for="Description" class="form-label">Description</label>
+                    <textarea class="form-control" name="Description" rows="2" placeholder="Description" required></textarea>
+                    <div class="invalid-feedback">Description is required.</div>
+                </div>
+            </div>
+
+            <!-- Image Upload -->
+            <div class="mb-4">
+                <label for="Photo" class="form-label">Upload Photo</label>
+                <div class="border border-dashed p-3 text-center custom-border" style="border-radius: 5px;">
+                    <label for="Photo" class="form-label">
+                        <i class="bi bi-image" style="font-size: 2rem;"></i>
+                        <p class="mt-2">Click to upload or drag and drop</p>
+                    </label>
+                    <input type="file" class="form-control d-none" name="Photo" id="Photo" accept="image/*" required>
+                    <div class="invalid-feedback">Please upload a photo.</div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn custom-btn px-4">Add Pet Details</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $("#petForm").submit(function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var formData = new FormData(this); // Capture form data
+
+            $.ajax({
+                url: "/Pets/AddPets", // Controller Route
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response.success) {
+                        $("#successModal").modal("show"); // Show success modal
+                        $("#petForm")[0].reset(); // Reset the form after submission
+                    } else {
+                        alert("Error: " + response.message);
+                    }
+                },
+                error: function () {
+                    alert("An error occurred while submitting the form.");
+                }
+            });
+        });
+    });
+</script>

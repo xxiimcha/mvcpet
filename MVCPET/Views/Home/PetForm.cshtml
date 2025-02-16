@@ -1,0 +1,390 @@
+﻿@page
+@{
+    Layout = "~/Views/Shared/_Logged.cshtml";
+}
+<style>
+    body {
+        background-color: #f5f2da;
+        font-family: Arial, sans-serif;
+    }
+
+    .form-container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-title {
+        color: #00291C;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .form-description {
+        text-align: left;
+        margin-bottom: 20px;
+        color: #00291C;
+    }
+
+    .form-subtitle {
+        font-weight: bold;
+        color: #00291C;
+    }
+
+    .btn-next {
+        background-color: #00291C;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-left: 900px;
+    }
+
+        .btn-next:hover {
+            background-color: #145a2d;
+        }
+
+    .btn-back {
+        background-color: #00291C;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+        .btn-back:hover {
+            background-color: #145a2d;
+        }
+
+    .btn-submit {
+        background-color: #00291C;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-left: 880px;
+    }
+
+    .form-section {
+        display: none;
+    }
+
+        .form-section.active {
+            display: block;
+        }
+
+    .custom-border {
+        border-color: #687451 !important;
+    }
+</style>
+
+<div class="form-container">
+    <h2 class="form-title">Adoption Application</h2>
+
+    <!-- Section 1 -->
+    <div class="form-section active" id="section1">
+        <h5 class="form-subtitle">PERSONAL INFORMATION</h5>
+        <p class="form-description">
+            Please provide your personal details so we can better understand your background
+            and reach out to you regarding the adoption process.
+        </p>
+        <form id="form1">
+            <div class="row mb-3">
+                <div class="col-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                        <label for="firstName">First Name</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                        <label for="lastName">Last Name</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="address" placeholder="Address">
+                <label for="address">Address</label>
+            </div>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <div class="form-floating">
+                        <input type="tel" class="form-control" id="phone" placeholder="Phone">
+                        <label for="phone">Phone</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-floating">
+                        <input type="email" class="form-control" id="email" placeholder="Email">
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <div class="form-floating">
+                        <input type="date" class="form-control" id="birthDate" placeholder="Birth Date">
+                        <label for="birthDate">Birth Date</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="occupation" placeholder="Occupation">
+                        <label for="occupation">Occupation</label>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn-next" onclick="nextSection(1, 'next')"> →</button>
+        </form>
+    </div>
+
+
+    <!-- Section 2 -->
+    <div class="form-section" id="section2">
+        <h5 class="form-subtitle">PERSONAL INFORMATION</h5>
+        <p class="form-description">
+            Please provide your personal details so we can better understand your background
+            and reach out to you regarding the adoption process.
+        </p>
+        <form id="form2">
+            <!-- First row: Marital Status and Pronouns -->
+            <div class="row mb-3">
+                <div class="col-6">
+                    <!-- Adjusted col-6 for responsive layout -->
+                    <label>Marital Status</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="maritalStatus" id="single" value="single">
+                        <label class="form-check-label" for="single">Single</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="maritalStatus" id="married" value="married">
+                        <label class="form-check-label" for="married">Married</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="maritalStatus" id="other" value="other">
+                        <label class="form-check-label" for="other">Other</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <!-- Adjusted col-6 for responsive layout -->
+                    <label>Pronouns</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="pronouns" id="she" value="she">
+                        <label class="form-check-label" for="she">She/Her</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="pronouns" id="he" value="he">
+                        <label class="form-check-label" for="he">He/Him</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="pronouns" id="they" value="they">
+                        <label class="form-check-label" for="they">They/Them</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second row: Yes/No question and File upload -->
+            <div class="row mb-3">
+                <div class="col-6">
+                    <label style="margin-top: 10px;">Have you adopted from Second Chances before?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="agree" id="yes" value="yes">
+                        <label class="form-check-label" for="yes">Yes</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="agree" id="no" value="no">
+                        <label class="form-check-label" for="no">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Third row: Another Yes/No question and Textbox -->
+            <div class="form-row mb-3">
+                <div class="col">
+                    <label style="margin-top: 10px;">Are you adopting this pet for another person? </label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="reviewed" id="termsYes" value="yes">
+                        <label class="form-check-label" for="termsYes">Yes</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="reviewed" id="termsNo" value="no">
+                        <label class="form-check-label" for="termsNo">No</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <button style="margin-top: 10px;" type="button" class="btn btn-back" onclick="nextSection(2, 'back')">← </button>
+                <button style="margin-left: 50px; margin-top: 10px;" type="button" class="btn btn-next" onclick="nextSection(2, 'next')"> →</button>
+
+            </div>
+        </form>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="form-section" id="section3">
+        <h5 class="form-subtitle">PET REFERENCE</h5>
+        <p class="form-description">
+            Kindly share your preferences for the type of pet you wish to adopt.
+        </p>
+        <form id="form3">
+            <div class="col">
+                <label>What are you looking to adopt?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="petToAdopt" id="cat" value="cat">
+                    <label class="form-check-label" for="she">Cat</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="petToAdopt" id="dog" value="dog">
+                    <label class="form-check-label" for="she">Dog</label>
+                </div>
+
+            </div>
+
+
+            <div class="d-flex justify-content-between">
+                <button style="margin-top: 10px;" type="button" class="btn btn-back" onclick="nextSection(3, 'back')">← </button>
+                <button style="margin-left: 50px; margin-top: 10px;" type="button" class="btn btn-next" onclick="nextSection(3, 'next')"> →</button>
+
+            </div>
+        </form>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="form-section" id="section4">
+        <h5 class="form-subtitle">LIVING STATUS</h5>
+        <p class="form-description">
+            We would appreciate details about your living environment to ensure the selected pet will be comfortable and safe in your home.
+        </p>
+        <form id="form4">
+            <!-- Row for building type and renting status -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label>What type of building do you live in?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="buildingType" id="house" value="house">
+                        <label class="form-check-label" for="house">House</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="buildingType" id="condo" value="condo">
+                        <label class="form-check-label" for="condo">Condo</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="buildingType" id="apartment" value="apartment">
+                        <label class="form-check-label" for="apartment">Apartment</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="buildingType" id="otherBuilding" value="other">
+                        <label class="form-check-label" for="otherBuilding">Other</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>Do you rent?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rentStatus" id="rentYes" value="yes">
+                        <label class="form-check-label" for="rentYes">Yes</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rentStatus" id="rentNo" value="no">
+                        <label class="form-check-label" for="rentNo">No</label>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Row for living companions -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label>Who do you live with?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="livingAlone" value="livingAlone">
+                        <label class="form-check-label" for="livingAlone">Living Alone</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="childrenOver18" value="childrenOver18">
+                        <label class="form-check-label" for="childrenOver18">Children over 18</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="childrenUnder18" value="childrenUnder18">
+                        <label class="form-check-label" for="childrenUnder18">Children below 18</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="spouse" value="spouse">
+                        <label class="form-check-label" for="spouse">Spouse</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-check mt-4">
+                        <input class="form-check-input" type="checkbox" id="parents" value="parents">
+                        <label class="form-check-label" for="parents">Parents</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="roommates" value="roommates">
+                        <label class="form-check-label" for="roommates">Roommate(s)</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="relatives" value="relatives">
+                        <label class="form-check-label" for="relatives">Relatives</label>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Navigation Button -->
+            <div class="d-flex justify-content-between">
+                <button style="margin-top: 10px;" type="button" class="btn btn-back" onclick="nextSection(4, 'back')">← </button>
+                <button style="margin-left: 50px; margin-top: 10px;" type="button" class="btn btn-next" onclick="nextSection(4, 'next')"> →</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Section 5 -->
+    <div class="form-section" id="section5">
+        <h5 class="form-subtitle">INTERVIEW AND VISITATION</h5>
+        <p class="form-description">
+            By submitting this form, you acknowledge and agree to the following terms and conditions:
+        </p>
+        <div style="background-color: #f8d7da; border-left: 6px solid #dc3545; padding: 15px; font-size: 16px;">
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li><strong style="color: #dc3545;">Your adoption request is pending approval upon submission.</strong></li>
+                <li><strong style="color: #dc3545;">You are required to attend an onsite interview once your request has been approved.</strong></li>
+                <li><strong style="color: #dc3545;">If you do not attend the interview within 3 days, your adoption request will be denied.</strong></li>
+            </ul>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button style="margin-top: 10px;" type="button" class="btn btn-back" onclick="nextSection(5, 'back')">← </button>
+            <button style="margin-top: 10px; margin-left: 50px;" type="submit" class="btn-submit" href="UserProfile">Submit</button>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function nextSection(sectionNumber, direction) {
+        // Hide the current section
+        const currentSection = document.getElementById('section' + sectionNumber);
+        currentSection.classList.remove('active');
+
+        // Calculate the next section number
+        const targetSectionNumber = direction === 'next' ? sectionNumber + 1 : sectionNumber - 1;
+
+        // Show the target section
+        const targetSection = document.getElementById('section' + targetSectionNumber);
+        if (targetSection) {
+            targetSection.classList.add('active');
+        } else {
+            console.error(`Section ${targetSectionNumber} does not exist.`);
+        }
+    }
+</script>

@@ -1,0 +1,143 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Commissions\\MVCPET\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\commissions\\mvcpet\\mvcpet\\views\\admin\\adoptedpetsadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\views\\admin\\adoptedpetsadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\commissions\\mvcpet\\mvcpet\\controllers\\petscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\controllers\\petscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\commissions\\mvcpet\\mvcpet\\controllers\\adminhomecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\controllers\\adminhomecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\commissions\\mvcpet\\mvcpet\\views\\admin\\addpetsadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\views\\admin\\addpetsadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\commissions\\mvcpet\\mvcpet\\views\\shared\\_petmanager.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\views\\shared\\_petmanager.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\commissions\\mvcpet\\mvcpet\\views\\admin\\petdetailadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\views\\admin\\petdetailadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\commissions\\mvcpet\\mvcpet\\models\\pet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\models\\pet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdoptedPetsAdmin.cshtml",
+              "DocumentMoniker": "F:\\Commissions\\MVCPET\\MVCPET\\Views\\Admin\\AdoptedPetsAdmin.cshtml",
+              "RelativeDocumentMoniker": "MVCPET\\Views\\Admin\\AdoptedPetsAdmin.cshtml",
+              "ToolTip": "F:\\Commissions\\MVCPET\\MVCPET\\Views\\Admin\\AdoptedPetsAdmin.cshtml",
+              "RelativeToolTip": "MVCPET\\Views\\Admin\\AdoptedPetsAdmin.cshtml",
+              "ViewState": "AgIAADsAAAAAAAAAAAAnwEoAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-16T13:47:06.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_PetManager.cshtml",
+              "DocumentMoniker": "F:\\Commissions\\MVCPET\\MVCPET\\Views\\Shared\\_PetManager.cshtml",
+              "RelativeDocumentMoniker": "MVCPET\\Views\\Shared\\_PetManager.cshtml",
+              "ToolTip": "F:\\Commissions\\MVCPET\\MVCPET\\Views\\Shared\\_PetManager.cshtml",
+              "RelativeToolTip": "MVCPET\\Views\\Shared\\_PetManager.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-16T13:41:25.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PetsController.cs",
+              "DocumentMoniker": "F:\\Commissions\\MVCPET\\MVCPET\\Controllers\\PetsController.cs",
+              "RelativeDocumentMoniker": "MVCPET\\Controllers\\PetsController.cs",
+              "ToolTip": "F:\\Commissions\\MVCPET\\MVCPET\\Controllers\\PetsController.cs",
+              "RelativeToolTip": "MVCPET\\Controllers\\PetsController.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAcwE8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T13:34:40.045Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AddPetsAdmin.cshtml",
+              "DocumentMoniker": "F:\\Commissions\\MVCPET\\MVCPET\\Views\\Admin\\AddPetsAdmin.cshtml",
+              "RelativeDocumentMoniker": "MVCPET\\Views\\Admin\\AddPetsAdmin.cshtml",
+              "ToolTip": "F:\\Commissions\\MVCPET\\MVCPET\\Views\\Admin\\AddPetsAdmin.cshtml",
+              "RelativeToolTip": "MVCPET\\Views\\Admin\\AddPetsAdmin.cshtml",
+              "ViewState": "AgIAALoAAAAAAAAAAAAUwNYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-16T13:33:58.226Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Pet.cs",
+              "DocumentMoniker": "F:\\Commissions\\MVCPET\\MVCPET\\Models\\Pet.cs",
+              "RelativeDocumentMoniker": "MVCPET\\Models\\Pet.cs",
+              "ToolTip": "F:\\Commissions\\MVCPET\\MVCPET\\Models\\Pet.cs",
+              "RelativeToolTip": "MVCPET\\Models\\Pet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T13:28:34.547Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PetDetailAdmin.cshtml",
+              "DocumentMoniker": "F:\\Commissions\\MVCPET\\MVCPET\\Views\\Admin\\PetDetailAdmin.cshtml",
+              "RelativeDocumentMoniker": "MVCPET\\Views\\Admin\\PetDetailAdmin.cshtml",
+              "ToolTip": "F:\\Commissions\\MVCPET\\MVCPET\\Views\\Admin\\PetDetailAdmin.cshtml",
+              "RelativeToolTip": "MVCPET\\Views\\Admin\\PetDetailAdmin.cshtml",
+              "ViewState": "AgIAADIAAAAAAAAAAAAUwE0AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-16T13:21:51.482Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdminHomeController.cs",
+              "DocumentMoniker": "F:\\Commissions\\MVCPET\\MVCPET\\Controllers\\AdminHomeController.cs",
+              "RelativeDocumentMoniker": "MVCPET\\Controllers\\AdminHomeController.cs",
+              "ToolTip": "F:\\Commissions\\MVCPET\\MVCPET\\Controllers\\AdminHomeController.cs",
+              "RelativeToolTip": "MVCPET\\Controllers\\AdminHomeController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAmwEcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T13:07:10.099Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

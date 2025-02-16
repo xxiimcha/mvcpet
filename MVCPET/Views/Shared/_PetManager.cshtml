@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Second Chances Admin</title>
+    <base />
+    <title>@ViewData["Title"] - Pet</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://keenthemes.com/metronic" />
+    <link rel="shortcut icon" href="~/media/logos/favicon.ico" />
+    <!--begin::Fonts(mandatory for all pages)-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
+    <!--end::Fonts-->
+    <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
+    <link href="~/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            background-color: #f0e7c2;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .sidebar {
+            background-color: #687451;
+            height: 100vh;
+            padding: 20px;
+            color: white;
+        }
+
+            .sidebar h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .sidebar ul {
+                list-style: none;
+                padding: 0;
+            }
+
+                .sidebar ul li {
+                    margin: 1rem 0;
+                }
+
+                    .sidebar ul li a {
+                        text-decoration: none;
+                        color: white;
+                        font-size: 1.5rem;
+                        display: flex;
+                        align-items: center;
+                        padding: 0.5rem 0;
+                    }
+
+                        .sidebar ul li a i {
+                            margin-right: 10px;
+                        }
+
+                        /* Hover effect */
+                        .sidebar ul li a:hover {
+                            background-color: #00291C; /* Dark green background */
+                            color: #FFFBF0; /* Light color for text when hovering */
+                            border-radius: 10px;
+                        }
+
+                        /* Active link (when clicked) */
+                        .sidebar ul li a.active {
+                            background-color: #00291C; /* Dark green background */
+                            color: #FFFBF0; /* Light color for text when active */
+                            border-radius: 10px;
+                        }
+
+            .sidebar i {
+                color: #FCFBFA;
+                font-size: 2rem;
+            }
+
+        .logout {
+            margin-top: auto;
+        }
+
+            .logout a {
+                text-decoration: none;
+                color: white;
+                font-size: 1.5rem;
+            }
+
+                .logout a:hover {
+                    color: #d1c5a1;
+                }
+    </style>
+
+</head>
+<body>
+    <div class="d-flex">
+        <div class="sidebar d-flex flex-column">
+            <a href="landing.html">
+                <img alt="Logo" src="~/media/logos/landing.svg" class="logo-default h-35px h-lg-50px" />
+            </a>
+            <ul>
+                <li><a asp-controller="Admin" asp-action="PetDetailAdmin" class="menu-item"><i class="fa-solid fa-paw"></i> Pet Details</a></li>
+                <li><a asp-controller ="Admin" asp-action="AdoptionAdmin" class="menu-item"><i class="fas fa-heart"></i> Adoption</a></li>
+                <li><a asp-controller="Admin" asp-action="AdoptedPetsAdmin" class="menu-item"><i class="fas fa-check"></i> Adopted Pets</a></li>
+                <li><a asp-controller="Admin" asp-action="AddPetsAdmin" class="menu-item"><i class="fas fa-plus"></i> Add Pets</a></li>
+                <li><a asp-controller="Admin" asp-action="EvaluatorsDashboard" class="menu-item"><i class="fas fa-plus"></i> Adoption Request</a></li>
+            </ul>
+            <div class="logout mt-auto">
+                <a href="Logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+        <div class="flex-grow-1 p-3">
+            @RenderBody()
+        </div>
+    </div>
+    <script>var hostUrl = "~/";</script>
+    <!--begin::Global Javascript Bundle(mandatory for all pages)-->
+    <script src="~/plugins/global/plugins.bundle.js"></script>
+    <script src="~/js/scripts.bundle.js"></script>
+    <!--end::Global Javascript Bundle-->
+    <!--begin::Custom Javascript(used for this page only)-->
+    <script src="~/js/custom/authentication/sign-in/general.js"></script>
+    <!--end::Custom Javascript-->
+    <!-- Script to handle the active state for sidebar menu items -->
+    <script>
+        // Get all menu items
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        // Add event listener to each menu item
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove 'active' class from all items
+                menuItems.forEach(i => i.classList.remove('active'));
+                // Add 'active' class to the clicked item
+                this.classList.add('active');
+            });
+        });
+    </script>
+    <!--end::Javascript-->
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
