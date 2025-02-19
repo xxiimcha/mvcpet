@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MVCPET")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+663b90d7f599794ba84dd20b63ad0a3d2797cd2d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35de3c7f0718a58360aeec0c63046e9f46533291")]
 [assembly: System.Reflection.AssemblyProductAttribute("MVCPET")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MVCPET")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
