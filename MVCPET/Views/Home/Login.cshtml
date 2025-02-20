@@ -83,3 +83,37 @@
 		await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
 	}
 }
+<script>
+    document.getElementById("kt_sign_in_submit").addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        let formData = {
+            Email: document.querySelector("input[name='email']").value,
+            Password: document.querySelector("input[name='password']").value
+        };
+
+        if (!formData.Email || !formData.Password) {
+            alert("Email and Password are required!");
+            return;
+        }
+
+        fetch("/Account/Login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = data.redirectUrl;
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            alert("Something went wrong. Please try again.");
+        });
+    });
+</script>

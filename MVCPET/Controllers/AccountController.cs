@@ -38,6 +38,36 @@ namespace MVCPET.Controllers
             return Json(new { success = true, message = "Registration successful!" });
         }
 
+        [HttpPost]
+        public IActionResult Login([FromBody] LoginModel model)
+        {
+            if (string.IsNullOrEmpty(model.Email) || string.IsNullOrEmpty(model.Password))
+            {
+                return Json(new { success = false, message = "Email and Password are required." });
+            }
+
+            // Hash the entered password
+            string hashedPassword = HashPassword(model.Password);
+
+            // Check if user exists in the database
+            var user = _context.Users.FirstOrDefault(u => u.Email == model.Email && u.Password == hashedPassword);
+
+            if (user == null)
+            {
+                return Json(new { success = false, message = "Invalid Email or Password." });
+            }
+
+            // Store user session
+            HttpContext.Session.SetInt32("UserId", user.Id);
+            HttpContext.Session.SetString("UserName", user.Name);
+            HttpContext.Session.SetString("UserRole", user.Role);
+
+            // Redirect based on user role
+            string redirectUrl = user.Role == "Admin" ? "/Admin/PetDetailAdmin" : "/Home/Index";
+
+            return Json(new { success = true, message = "Login successful!", redirectUrl = redirectUrl });
+        }
+
         private string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
@@ -51,5 +81,20 @@ namespace MVCPET.Controllers
                 return builder.ToString();
             }
         }
+
+        [HttpPost] // Use POST for logout to prevent accidental logouts from GET requests
+        public IActionResult Logout()
+        {
+            // Clear session
+            HttpContext.Session.Clear();
+
+            // Redirect to the home page after logout
+            return RedirectToAction("Index", "Home");
+        }
+    }
+    public class LoginModel
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }

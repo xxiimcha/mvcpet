@@ -20,9 +20,14 @@ namespace MVCPET.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             ViewData["Title"] = "Home";
+
+            // Retrieve the logged-in user's name from the session
+            string userName = HttpContext.Session.GetString("UserName");
+            ViewData["UserName"] = userName; // Pass it to the view
+
             return View();
         }
 

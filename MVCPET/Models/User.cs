@@ -18,5 +18,9 @@ public class User
     [MaxLength(500)]
     public string Address { get; set; }
 
+    [Required]
+    [MaxLength(50)]
+    public string Role { get; set; } = "User"; // Default role is "User", can be "Admin"
+
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 }

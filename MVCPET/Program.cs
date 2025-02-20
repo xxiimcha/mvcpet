@@ -21,6 +21,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 builder.Services.AddAuthorization();
 
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 // Add session services
 builder.Services.AddSession(options =>
 {
