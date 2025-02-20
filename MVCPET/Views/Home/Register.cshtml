@@ -11,7 +11,7 @@
 		<!--begin::Wrapper-->
 		<div class="d-flex flex-center flex-column flex-column-fluid px-lg-10 pb-15 pb-lg-20">
 			<!--begin::Form-->
-			<form asp-action="Register" method="post" class="form w-100" novalidate="novalidate" id="kt_sign_up_form" data-kt-redirect-url="authentication/layouts/creative/sign-in.html">
+			<form asp-controller="Account" asp-action="Register" method="post" class="form w-100" novalidate="novalidate" id="kt_sign_up_form">
 				<!--begin::Login options-->
 				<div class="row g-3 mb-9">
 					<!--begin::Col-->
@@ -26,19 +26,28 @@
 					<span class="w-125px text-gray-500 fw-semibold fs-7">Sign Up</span>
 				</div>
 				<!--end::Separator-->
-				<!--begin::Input group=-->
+				<!-- Full Name -->
 				<div class="fv-row mb-8">
-					<!--begin::Email-->
-					<input type="text" placeholder="Email" name="email" autocomplete="off" class="form-control bg-transparent" />
-					<!--end::Email-->
+					<input type="text" placeholder="Full Name" name="Name" autocomplete="off" class="form-control bg-transparent" required />
 				</div>
-				<!--begin::Input group-->
+
+				<!-- Email -->
+				<div class="fv-row mb-8">
+					<input type="email" placeholder="Email" name="Email" autocomplete="off" class="form-control bg-transparent" required />
+				</div>
+
+				<!-- Address -->
+				<div class="fv-row mb-8">
+					<input type="text" placeholder="Address" name="Address" autocomplete="off" class="form-control bg-transparent" required />
+				</div>
+
+				<!--begin::Password group-->
 				<div class="fv-row mb-8" data-kt-password-meter="true">
 					<!--begin::Wrapper-->
 					<div class="mb-1">
 						<!--begin::Input wrapper-->
 						<div class="position-relative mb-3">
-							<input  class="form-control bg-transparent" type="password" placeholder="Password" name="password" autocomplete="off" />
+							<input class="form-control bg-transparent" type="password" placeholder="Password" name="Password" autocomplete="off" required />
 							<span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
 								<i class="ki-duotone ki-eye-slash fs-2"></i>
 								<i class="ki-duotone ki-eye fs-2 d-none"></i>
@@ -59,25 +68,23 @@
 					<div class="text-muted">Use 8 or more characters with a mix of letters, numbers & symbols.</div>
 					<!--end::Hint-->
 				</div>
-				<!--end::Input group=-->
-				<!--end::Input group=-->
+				<!--end::Password group-->
+				<!-- Confirm Password -->
 				<div class="fv-row mb-8">
-					<!--begin::Repeat Password-->
-					<input  placeholder="Repeat Password" name="confirm-password" type="password" autocomplete="off" class="form-control bg-transparent" />
-					<!--end::Repeat Password-->
+					<input placeholder="Repeat Password" name="ConfirmPassword" type="password" autocomplete="off" class="form-control bg-transparent" required />
 				</div>
-				<!--end::Input group=-->
-				<!--begin::Accept-->
+
+				<!--begin::Accept Terms-->
 				<div class="fv-row mb-8">
 					<label class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" name="toc" value="1" />
+						<input class="form-check-input" type="checkbox" name="toc" value="1" required />
 						<span class="form-check-label fw-semibold text-gray-700 fs-base ms-1">
 							I Accept the
 							<a href="#" class="ms-1 link-primary">Terms</a>
 						</span>
 					</label>
 				</div>
-				<!--end::Accept-->
+				<!--end::Accept Terms-->
 				<!--begin::Submit button-->
 				<div class="d-grid mb-10">
 					<button type="submit" id="kt_sign_up_submit" class="btn btn-primary">
@@ -93,13 +100,16 @@
 					</button>
 				</div>
 				<!--end::Submit button-->
-				<!--begin::Sign up-->
+				<!--begin::Sign in link-->
 				<div class="text-gray-500 text-center fw-semibold fs-6">
 					Already have an Account?
-					<a asp-controller ="Home" asp-action="Login" class="link-primary fw-semibold">Sign in</a>
+					<a asp-controller="Home" asp-action="Login" class="link-primary fw-semibold">Sign in</a>
 				</div>
-				<!--end::Sign up-->
+				<!--end::Sign in link-->
 			</form>
+
+			<div id="registerSuccess" class="alert alert-success d-none">Registration Successful! Redirecting...</div>
+			<div id="registerError" class="alert alert-danger d-none">An error occurred. Please try again.</div>
 			<!--end::Form-->
 		</div>
 		<!--end::Wrapper-->
@@ -107,3 +117,51 @@
 	<!--end::Card-->
 </div>
 <!--end::Body-->
+
+<script>
+	document.getElementById("kt_sign_up_submit").addEventListener("click", function () {
+		let formData = {
+			Name: document.querySelector("input[name='Name']").value,
+			Email: document.querySelector("input[name='Email']").value,
+			Address: document.querySelector("input[name='Address']").value,
+			Password: document.querySelector("input[name='Password']").value,
+			ConfirmPassword: document.querySelector("input[name='ConfirmPassword']").value
+		};
+
+		if (!formData.Name || !formData.Email || !formData.Password || !formData.ConfirmPassword) {
+			document.getElementById("registerError").innerHTML = "All fields are required!";
+			document.getElementById("registerError").classList.remove("d-none");
+			return;
+		}
+
+		if (formData.Password !== formData.ConfirmPassword) {
+			document.getElementById("registerError").innerHTML = "Passwords do not match!";
+			document.getElementById("registerError").classList.remove("d-none");
+			return;
+		}
+
+		fetch("/Account/Register", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(formData)
+		})
+		.then(response => response.json())
+		.then(data => {
+			if (data.success) {
+				document.getElementById("registerSuccess").classList.remove("d-none");
+				setTimeout(() => {
+					window.location.href = "/Home/Login";
+				}, 2000);
+			} else {
+				document.getElementById("registerError").innerHTML = data.message;
+				document.getElementById("registerError").classList.remove("d-none");
+			}
+		})
+		.catch(error => {
+			document.getElementById("registerError").innerHTML = "Something went wrong!";
+			document.getElementById("registerError").classList.remove("d-none");
+		});
+	});
+</script>
