@@ -187,6 +187,47 @@
                     </select>
                     <div class="invalid-feedback">Please select the vaccination status.</div>
                 </div>
+                <div class="col-md-4 mb-3">
+                    <label for="Neuter" class="form-label">Neutered?</label>
+                    <select class="form-select" name="Neuter" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                    <div class="invalid-feedback">Please select if the pet is neutered.</div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="Diagnosis" class="form-label">Diagnosis</label>
+                    <input type="text" class="form-control" name="Diagnosis" placeholder="Enter diagnosis" required>
+                    <div class="invalid-feedback">Diagnosis is required.</div>
+                </div>
+            </div>
+
+            <!-- Dynamic Vaccine History Section -->
+            <h5 class="text-center mt-3">Vaccine History</h5>
+            <div id="vaccineHistoryContainer">
+                <div class="row vaccine-entry">
+                    <div class="col-md-5 mb-3">
+                        <label for="VaccineType" class="form-label">Vaccine Type</label>
+                        <input type="text" class="form-control" name="VaccineType[]" placeholder="Enter vaccine type" required>
+                        <div class="invalid-feedback">Vaccine type is required.</div>
+                    </div>
+                    <div class="col-md-5 mb-3">
+                        <label for="VaccineDate" class="form-label">Vaccine Date</label>
+                        <input type="date" class="form-control" name="VaccineDate[]" required>
+                        <div class="invalid-feedback">Vaccine date is required.</div>
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button type="button" class="btn btn-danger remove-vaccine">X</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="button" id="addVaccine" class="btn btn-info mb-3">+ Add Vaccine</button>
+            </div>
+
+            <div class="row">
                 <div class="col-md-8 mb-3">
                     <label for="Description" class="form-label">Description</label>
                     <textarea class="form-control" name="Description" rows="2" placeholder="Description" required></textarea>
@@ -217,6 +258,44 @@
 
 
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const vaccineContainer = document.getElementById("vaccineHistoryContainer");
+        const addVaccineButton = document.getElementById("addVaccine");
+
+        addVaccineButton.addEventListener("click", function () {
+            const newVaccineEntry = document.createElement("div");
+            newVaccineEntry.classList.add("row", "vaccine-entry");
+            newVaccineEntry.innerHTML = `
+                <div class="col-md-5 mb-3">
+                    <label class="form-label">Vaccine Type</label>
+                    <input type="text" class="form-control" name="VaccineType[]" placeholder="Enter vaccine type" required>
+                    <div class="invalid-feedback">Vaccine type is required.</div>
+                </div>
+                <div class="col-md-5 mb-3">
+                    <label class="form-label">Vaccine Date</label>
+                    <input type="date" class="form-control" name="VaccineDate[]" required>
+                    <div class="invalid-feedback">Vaccine date is required.</div>
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="button" class="btn btn-danger remove-vaccine">X</button>
+                </div>
+            `;
+            vaccineContainer.appendChild(newVaccineEntry);
+
+            // Add event listener for removing vaccine entry
+            newVaccineEntry.querySelector(".remove-vaccine").addEventListener("click", function () {
+                newVaccineEntry.remove();
+            });
+        });
+
+        // Allow removing initial vaccine entry
+        document.querySelectorAll(".remove-vaccine").forEach(button => {
+            button.addEventListener("click", function () {
+                button.parentElement.parentElement.remove();
+            });
+        });
+    });
+
     $(document).ready(function () {
         $("#petForm").submit(function (event) {
             event.preventDefault(); // Prevent default form submission

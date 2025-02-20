@@ -15281,8 +15281,28 @@
       "PackagePath": "staticwebassets\\sass\\vendors\\plugins\\mixins\\_nouislider.scss"
     },
     {
+      "Id": "F:\\SYSTEMS\\mvcpet\\MVCPET\\wwwroot\\uploads\\0ac3a20f-6aec-4e4c-bd06-6863504f7d8c.png",
+      "PackagePath": "staticwebassets\\uploads\\0ac3a20f-6aec-4e4c-bd06-6863504f7d8c.png"
+    },
+    {
+      "Id": "F:\\SYSTEMS\\mvcpet\\MVCPET\\wwwroot\\uploads\\1db1c020-2ecc-44a0-ba07-250285fab672.png",
+      "PackagePath": "staticwebassets\\uploads\\1db1c020-2ecc-44a0-ba07-250285fab672.png"
+    },
+    {
+      "Id": "F:\\SYSTEMS\\mvcpet\\MVCPET\\wwwroot\\uploads\\479cfa2b-481f-4322-85a0-50da428c27e6.png",
+      "PackagePath": "staticwebassets\\uploads\\479cfa2b-481f-4322-85a0-50da428c27e6.png"
+    },
+    {
+      "Id": "F:\\SYSTEMS\\mvcpet\\MVCPET\\wwwroot\\uploads\\82e49040-eed7-405c-a2db-e1b5f6eb7e7b.png",
+      "PackagePath": "staticwebassets\\uploads\\82e49040-eed7-405c-a2db-e1b5f6eb7e7b.png"
+    },
+    {
       "Id": "F:\\SYSTEMS\\mvcpet\\MVCPET\\wwwroot\\uploads\\978c1d19-7125-44fd-aaa9-7baab9ac5945.png",
       "PackagePath": "staticwebassets\\uploads\\978c1d19-7125-44fd-aaa9-7baab9ac5945.png"
+    },
+    {
+      "Id": "F:\\SYSTEMS\\mvcpet\\MVCPET\\wwwroot\\uploads\\c4c72c48-4d29-4ecc-b5fe-dba51239a6c2.png",
+      "PackagePath": "staticwebassets\\uploads\\c4c72c48-4d29-4ecc-b5fe-dba51239a6c2.png"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.MVCPET.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

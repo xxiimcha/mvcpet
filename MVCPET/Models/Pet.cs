@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
 public class Pet
 {
     public int Id { get; set; }
@@ -12,7 +11,10 @@ public class Pet
     public bool Vaccinated { get; set; }
     public string Description { get; set; }
     public string PhotoPath { get; set; }
+    public bool IsAdopted { get; set; }
+    public bool Neuter { get; set; }  // Added Neuter field
+    public string Diagnosis { get; set; } // Added Diagnosis field
 
-    // New Column
-    public bool IsAdopted { get; set; } // True = Adopted, False = Available
+    // Relationship to Vaccination Table
+    public List<PetVaccination> Vaccinations { get; set; } = new List<PetVaccination>();
 }

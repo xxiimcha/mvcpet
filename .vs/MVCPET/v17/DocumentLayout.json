@@ -3,8 +3,52 @@
   "WorkspaceRootPath": "F:\\SYSTEMS\\mvcpet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\mvcpet.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\mvcpet.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\SYSTEMS\\mvcpet\\MVCPET\\Migrations\\20250220001137_addRequestandUsersTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MVCPET\\Migrations\\20250220001137_addRequestandUsersTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\models\\adoptionrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\models\\adoptionrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\migrations\\20250219024702_addpetmedicaldetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\migrations\\20250219024702_addpetmedicaldetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\models\\petvaccination.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\models\\petvaccination.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\controllers\\petscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\controllers\\petscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\views\\admin\\addpetsadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\views\\admin\\addpetsadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\models\\pet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\models\\pet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\views\\home\\petdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\views\\home\\petdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,13 +67,157 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MVCPET",
-              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\MVCPET.csproj",
-              "RelativeDocumentMoniker": "MVCPET\\MVCPET.csproj",
-              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\MVCPET.csproj",
-              "RelativeToolTip": "MVCPET\\MVCPET.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-02-19T02:34:43.375Z",
+              "Title": "20250220001137_addRequestandUsersTable.cs",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Migrations\\20250220001137_addRequestandUsersTable.cs",
+              "RelativeDocumentMoniker": "MVCPET\\Migrations\\20250220001137_addRequestandUsersTable.cs",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Migrations\\20250220001137_addRequestandUsersTable.cs",
+              "RelativeToolTip": "MVCPET\\Migrations\\20250220001137_addRequestandUsersTable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T00:11:38.027Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "20250219024702_AddPetMedicalDetails.cs",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Migrations\\20250219024702_AddPetMedicalDetails.cs",
+              "RelativeDocumentMoniker": "MVCPET\\Migrations\\20250219024702_AddPetMedicalDetails.cs",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Migrations\\20250219024702_AddPetMedicalDetails.cs",
+              "RelativeToolTip": "MVCPET\\Migrations\\20250219024702_AddPetMedicalDetails.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T00:09:25.725Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\appsettings.json",
+              "RelativeDocumentMoniker": "MVCPET\\appsettings.json",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\appsettings.json",
+              "RelativeToolTip": "MVCPET\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-02-19T23:56:23.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdoptionRequest.cs",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Models\\AdoptionRequest.cs",
+              "RelativeDocumentMoniker": "MVCPET\\Models\\AdoptionRequest.cs",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Models\\AdoptionRequest.cs",
+              "RelativeToolTip": "MVCPET\\Models\\AdoptionRequest.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T21:30:57.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "User.cs",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Models\\User.cs",
+              "RelativeDocumentMoniker": "MVCPET\\Models\\User.cs",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Models\\User.cs",
+              "RelativeToolTip": "MVCPET\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T21:30:17.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PetVaccination.cs",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Models\\PetVaccination.cs",
+              "RelativeDocumentMoniker": "MVCPET\\Models\\PetVaccination.cs",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Models\\PetVaccination.cs",
+              "RelativeToolTip": "MVCPET\\Models\\PetVaccination.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAUwBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T21:00:54.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Pet.cs",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Models\\Pet.cs",
+              "RelativeDocumentMoniker": "MVCPET\\Models\\Pet.cs",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Models\\Pet.cs",
+              "RelativeToolTip": "MVCPET\\Models\\Pet.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAswBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T21:02:55.835Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "MVCPET\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "MVCPET\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T20:59:09.477Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PetsController.cs",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Controllers\\PetsController.cs",
+              "RelativeDocumentMoniker": "MVCPET\\Controllers\\PetsController.cs",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Controllers\\PetsController.cs",
+              "RelativeToolTip": "MVCPET\\Controllers\\PetsController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAowFoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T20:57:27.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AddPetsAdmin.cshtml",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Views\\Admin\\AddPetsAdmin.cshtml",
+              "RelativeDocumentMoniker": "MVCPET\\Views\\Admin\\AddPetsAdmin.cshtml",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Views\\Admin\\AddPetsAdmin.cshtml",
+              "RelativeToolTip": "MVCPET\\Views\\Admin\\AddPetsAdmin.cshtml",
+              "ViewState": "AgIAACMBAAAAAAAAAAAkwEUBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-19T20:43:59.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PetDetails.cshtml",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Views\\Home\\PetDetails.cshtml",
+              "RelativeDocumentMoniker": "MVCPET\\Views\\Home\\PetDetails.cshtml",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Views\\Home\\PetDetails.cshtml",
+              "RelativeToolTip": "MVCPET\\Views\\Home\\PetDetails.cshtml",
+              "ViewState": "AgIAAEgAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-19T20:43:24.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "MVCPET\\Controllers\\HomeController.cs",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "MVCPET\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAA9wGQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T20:43:02.251Z",
               "EditorCaption": ""
             }
           ]

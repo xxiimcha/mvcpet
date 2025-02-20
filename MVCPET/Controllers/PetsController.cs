@@ -16,13 +16,26 @@ namespace MVCPET.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddPets([FromForm] Pet pet, IFormFile Photo)
+        [Route("Pets/AddPets")]
+        public async Task<IActionResult> AddPets(
+    [FromForm] Pet pet,
+    IFormFile Photo,
+    [FromForm] List<string> VaccineType,
+    [FromForm] List<DateTime> VaccineDate)
         {
             if (string.IsNullOrEmpty(pet.Name) || string.IsNullOrEmpty(pet.Species))
             {
                 return Json(new { success = false, message = "Required fields are missing." });
             }
 
+            // Debugging: Log received vaccine data
+            Console.WriteLine($"Received {VaccineType.Count} vaccines for {pet.Name}");
+            for (int i = 0; i < VaccineType.Count; i++)
+            {
+                Console.WriteLine($"Vaccine {i + 1}: {VaccineType[i]} - {VaccineDate[i]}");
+            }
+
+            // Handle Photo Upload
             if (Photo != null && Photo.Length > 0)
             {
                 var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
@@ -41,8 +54,37 @@ namespace MVCPET.Controllers
 
             pet.IsAdopted = false; // Default value
 
+            // Add pet to database first
             _context.Pets.Add(pet);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();  // Ensure pet ID is generated
+
+            Console.WriteLine($"New Pet ID: {pet.Id}"); // Debugging
+
+            // Ensure vaccine data exists and has the same count
+            if (VaccineType != null && VaccineDate != null && VaccineType.Count == VaccineDate.Count)
+            {
+                var vaccineList = new List<PetVaccination>();
+
+                for (int i = 0; i < VaccineType.Count; i++)
+                {
+                    var petVaccine = new PetVaccination
+                    {
+                        PetId = pet.Id,  // Link vaccine to pet
+                        VaccineType = VaccineType[i],
+                        VaccineDate = VaccineDate[i]
+                    };
+
+                    vaccineList.Add(petVaccine);
+                }
+
+                _context.Vaccinations.AddRange(vaccineList);
+                await _context.SaveChangesAsync();
+                Console.WriteLine("Vaccination records added successfully."); // Debugging
+            }
+            else
+            {
+                Console.WriteLine("Vaccine data is missing or mismatched.");
+            }
 
             return Json(new { success = true, message = "Pet added successfully!" });
         }

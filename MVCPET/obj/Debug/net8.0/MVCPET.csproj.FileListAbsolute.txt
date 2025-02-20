@@ -248,13 +248,10 @@ F:\SYSTEMS\mvcpet\MVCPET\obj\Debug\net8.0\MVCPET.MvcApplicationPartsAssemblyInfo
 F:\SYSTEMS\mvcpet\MVCPET\obj\Debug\net8.0\MVCPET.RazorAssemblyInfo.cache
 F:\SYSTEMS\mvcpet\MVCPET\obj\Debug\net8.0\MVCPET.RazorAssemblyInfo.cs
 F:\SYSTEMS\mvcpet\MVCPET\obj\Debug\net8.0\MVCPET.sourcelink.json
-F:\SYSTEMS\mvcpet\MVCPET\obj\Debug\net8.0\MVCPET.dll
-F:\SYSTEMS\mvcpet\MVCPET\obj\Debug\net8.0\refint\MVCPET.dll
-F:\SYSTEMS\mvcpet\MVCPET\obj\Debug\net8.0\MVCPET.pdb
 F:\SYSTEMS\mvcpet\MVCPET\bin\Debug\net8.0\appsettings.Development.json
+F:\SYSTEMS\mvcpet\MVCPET\bin\Debug\net8.0\MVCPET.staticwebassets.endpoints.json
 F:\SYSTEMS\mvcpet\MVCPET\bin\Debug\net8.0\appsettings.json
 F:\SYSTEMS\mvcpet\MVCPET\bin\Debug\net8.0\MVCPET.staticwebassets.runtime.json
-F:\SYSTEMS\mvcpet\MVCPET\bin\Debug\net8.0\MVCPET.staticwebassets.endpoints.json
 F:\SYSTEMS\mvcpet\MVCPET\bin\Debug\net8.0\MVCPET.exe
 F:\SYSTEMS\mvcpet\MVCPET\bin\Debug\net8.0\MVCPET.deps.json
 F:\SYSTEMS\mvcpet\MVCPET\bin\Debug\net8.0\MVCPET.runtimeconfig.json
@@ -410,5 +407,8 @@ F:\SYSTEMS\mvcpet\MVCPET\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitiv
 F:\SYSTEMS\mvcpet\MVCPET\obj\Debug\net8.0\staticwebassets.pack.json
 F:\SYSTEMS\mvcpet\MVCPET\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 F:\SYSTEMS\mvcpet\MVCPET\obj\Debug\net8.0\MVCPET.csproj.Up2Date
+F:\SYSTEMS\mvcpet\MVCPET\obj\Debug\net8.0\MVCPET.dll
+F:\SYSTEMS\mvcpet\MVCPET\obj\Debug\net8.0\refint\MVCPET.dll
+F:\SYSTEMS\mvcpet\MVCPET\obj\Debug\net8.0\MVCPET.pdb
 F:\SYSTEMS\mvcpet\MVCPET\obj\Debug\net8.0\MVCPET.genruntimeconfig.cache
 F:\SYSTEMS\mvcpet\MVCPET\obj\Debug\net8.0\ref\MVCPET.dll

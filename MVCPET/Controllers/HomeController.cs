@@ -62,15 +62,17 @@ namespace MVCPET.Controllers
 
         public IActionResult PetDetails(int id)
         {
-            var pet = _context.Pets.FirstOrDefault(p => p.Id == id);
+            var pet = _context.Pets
+                .Include(p => p.Vaccinations)
+                .FirstOrDefault(p => p.Id == id);
+
             if (pet == null)
             {
-                return NotFound(); // Handle missing pet gracefully
+                return NotFound();
             }
 
-            return View(pet); // Ensure the View receives a Pet model
+            return View(pet);
         }
-
 
         public IActionResult UserProfile()
         {
