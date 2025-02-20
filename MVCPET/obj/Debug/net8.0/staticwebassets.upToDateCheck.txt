@@ -3824,3 +3824,4 @@ wwwroot\uploads\82e49040-eed7-405c-a2db-e1b5f6eb7e7b.png
 wwwroot\uploads\978c1d19-7125-44fd-aaa9-7baab9ac5945.png
 wwwroot\uploads\acee7c4d-3919-4d2b-aa23-e680981b93f1.jpg
 wwwroot\uploads\c4c72c48-4d29-4ecc-b5fe-dba51239a6c2.png
+wwwroot\uploads\c753f879-494c-4f4b-bbcb-108b3a9a9d3b.png

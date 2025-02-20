@@ -80,32 +80,31 @@ namespace MVCPET.Controllers
 
         public IActionResult PetForm(int petId)
         {
-            var userId = HttpContext.Session.GetInt32("UserId"); // Retrieve logged-in user ID
-
-            if (userId == null)
-            {
-                return RedirectToAction("Login"); // Redirect if user is not logged in
-            }
-
-            var user = _context.Users.FirstOrDefault(u => u.Id == userId);
             var pet = _context.Pets.FirstOrDefault(p => p.Id == petId);
-
-            if (pet == null || user == null)
+            if (pet == null)
             {
-                return NotFound("Pet or User not found.");
+                return NotFound();
             }
 
-            var adoptionRequest = new
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            // Use an anonymous object as dynamic
+            dynamic model = new
             {
                 Pet = pet,
-                UserName = user.Name, // Ensure the 'Name' field exists in your User model
-                UserAddress = user.Address,
-                UserEmail = user.Email
+                UserName = user.Name,
+                UserEmail = user.Email,
+                UserAddress = user.Address
             };
 
-            return View(adoptionRequest); // Pass user & pet details to the view
+            return View(model);
         }
-
 
         public IActionResult UserProfile()
         {

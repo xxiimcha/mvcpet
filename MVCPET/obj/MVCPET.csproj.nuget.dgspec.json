@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "F:\\SYSTEMS\\mvcpet\\MVCPET\\MVCPET.csproj": {}
+    "F:\\Commissions\\MVCPET\\MVCPET\\MVCPET.csproj": {}
   },
   "projects": {
-    "F:\\SYSTEMS\\mvcpet\\MVCPET\\MVCPET.csproj": {
+    "F:\\Commissions\\MVCPET\\MVCPET\\MVCPET.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\SYSTEMS\\mvcpet\\MVCPET\\MVCPET.csproj",
+        "projectUniqueName": "F:\\Commissions\\MVCPET\\MVCPET\\MVCPET.csproj",
         "projectName": "MVCPET",
-        "projectPath": "F:\\SYSTEMS\\mvcpet\\MVCPET\\MVCPET.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "F:\\SYSTEMS\\mvcpet\\MVCPET\\obj\\",
+        "projectPath": "F:\\Commissions\\MVCPET\\MVCPET\\MVCPET.csproj",
+        "packagesPath": "C:\\Users\\cha\\.nuget\\packages\\",
+        "outputPath": "F:\\Commissions\\mvcpet\\MVCPET\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cha\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,12 +45,16 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[9.0.2, )"
@@ -80,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.103/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

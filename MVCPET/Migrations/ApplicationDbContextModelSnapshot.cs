@@ -172,6 +172,18 @@ namespace MVCPET.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Admin HQ",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "admin@example.com",
+                            Name = "Admin User",
+                            Password = "$2a$11$zLxA8hdOfJexQl9DaiAvAO4T4dKpH5wsNBNI9dKH4zE0ZWK4zKz3O",
+                            Role = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("AdoptionRequest", b =>

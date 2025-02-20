@@ -1,5 +1,7 @@
-﻿@page
+﻿@model dynamic
+
 @{
+
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
@@ -95,21 +97,12 @@
         </p>
         <form id="form1">
             <div class="row mb-3">
-                <div class="col-6">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="firstName" placeholder="First Name">
-                        <label for="firstName">First Name</label>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="lastName" placeholder="Last Name">
-                        <label for="lastName">Last Name</label>
-                    </div>
+                <div class="col-12">
+                    <input type="text" class="form-control" id="name" placeholder="Name" value="@Model.UserName" readonly>
                 </div>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="address" placeholder="Address">
+                <input type="text" class="form-control" id="address" placeholder="Address" value="@Model.UserAddress" readonly>
                 <label for="address">Address</label>
             </div>
             <div class="row mb-3">
@@ -121,7 +114,7 @@
                 </div>
                 <div class="col-6">
                     <div class="form-floating">
-                        <input type="email" class="form-control" id="email" placeholder="Email">
+                        <input type="email" class="form-control" id="email" placeholder="Email" value="@Model.UserEmail" readonly>
                         <label for="email">Email</label>
                     </div>
                 </div>

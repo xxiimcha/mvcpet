@@ -99,13 +99,13 @@ namespace MVCPET.Controllers
             }
         }
 
-        [HttpPost] // Use POST for logout to prevent accidental logouts from GET requests
+        [HttpGet, HttpPost] // Allow both GET and POST requests
         public IActionResult Logout()
         {
             // Clear session
             HttpContext.Session.Clear();
 
-            // Redirect to the home page after logout
+            // Redirect to home page after logout
             return RedirectToAction("Index", "Home");
         }
     }
