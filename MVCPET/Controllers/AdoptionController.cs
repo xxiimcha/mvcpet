@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 
 public class AdoptionController : Controller
 {
@@ -19,7 +20,6 @@ public class AdoptionController : Controller
             return Json(new { success = false, message = "No data received." });
         }
 
-        // Fetch Pet and User objects manually from the database
         var pet = _context.Pets.FirstOrDefault(p => p.Id == request.PetId);
         var user = _context.Users.FirstOrDefault(u => u.Id == request.UserId);
 
@@ -33,11 +33,8 @@ public class AdoptionController : Controller
             return Json(new { success = false, message = "Invalid UserId: User not found." });
         }
 
-        // ✅ Assign Pet and User objects before saving
         request.Pet = pet;
         request.User = user;
-
-        // Set default values for required fields
         request.Status = "Pending";
         request.RequestDate = DateTime.Now;
 
@@ -61,4 +58,34 @@ public class AdoptionController : Controller
         }
     }
 
+    [HttpPost]
+    public IActionResult ApproveRequest(int id)
+    {
+        var request = _context.AdoptionRequests.FirstOrDefault(r => r.Id == id);
+        if (request == null)
+        {
+            return Json(new { success = false, message = "Request not found." });
+        }
+
+        request.Status = "Approved";
+        _context.SaveChanges();
+
+        return Json(new { success = true, message = "Adoption request approved." });
+    }
+
+    [HttpPost]
+    public IActionResult RejectRequest(int id, string reason)
+    {
+        var request = _context.AdoptionRequests.FirstOrDefault(r => r.Id == id);
+        if (request == null)
+        {
+            return Json(new { success = false, message = "Request not found." });
+        }
+
+        request.Status = "Rejected";
+        request.RejectionReason = reason;
+        _context.SaveChanges();
+
+        return Json(new { success = true, message = "Adoption request rejected." });
+    }
 }

@@ -127,13 +127,22 @@
                             @foreach (var request in Model)
                             {
                                 <tr>
-                                    <td>@request.User.Name</td>
-                                    <td>@request.User.Email</td>
-                                    <td>@request.RequestDate.ToString("yyyy-MM-dd")</td>
-                                    <td>@request.Pet.Name</td>
-                                    <td>@request.Status</td>
+                                    <td>@request.Name</td>  @* Full Name *@
+                                    <td>@request.Email</td> @* Email *@
+                                    <td>@request.RequestDate.ToString("yyyy-MM-dd")</td> @* Date Submitted *@
+                                    <td>@request.Pet.Name</td> @* Pet Name *@
+                                    <td>@request.Status</td> @* Status *@
                                     <td>
-                                        <button class="btn btn-primary btn-sm mx-1">View</button>
+                                        <button class="btn btn-primary btn-sm mx-1" onclick="viewAdoptionRequest(
+                        '@request.Name', '@request.Email', '@request.Phone', '@request.Address',
+                        '@request.BirthDate.ToString("yyyy-MM-dd")', '@request.Occupation', '@request.MaritalStatus',
+                        '@request.Pronouns', '@request.HasAdoptedBefore', '@request.IsAdoptingForAnother',
+                        '@request.PetPreference', '@request.Pet.Name', '@request.Pet.Species',
+                        '@request.LivingType', '@request.IsRenting', '@request.HouseholdMembers',
+                        '@request.Status', '@request.RequestDate.ToString("yyyy-MM-dd")'
+                    )">
+                                            View
+                                        </button>
                                         <a href="@Url.Action("ApproveRequest", "Admin", new { id = request.Id })" class="btn btn-success btn-sm mx-1">Approve</a>
                                         <a href="@Url.Action("RejectRequest", "Admin", new { id = request.Id })" class="btn btn-danger btn-sm mx-1">Reject</a>
                                     </td>
@@ -147,8 +156,133 @@
                             </tr>
                         }
                     </tbody>
+
                 </table>
             </div>
         </div>
     </div>
+
+    <!-- Adoption Request Details Modal -->
+    <div class="modal fade" id="adoptionRequestModal" tabindex="-1" aria-labelledby="adoptionRequestModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title" id="adoptionRequestModalLabel">Adoption Request Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>Name:</th>
+                                <td id="modalUserName"></td>
+                            </tr>
+                            <tr>
+                                <th>Email:</th>
+                                <td id="modalUserEmail"></td>
+                            </tr>
+                            <tr>
+                                <th>Phone:</th>
+                                <td id="modalUserPhone"></td>
+                            </tr>
+                            <tr>
+                                <th>Address:</th>
+                                <td id="modalUserAddress"></td>
+                            </tr>
+                            <tr>
+                                <th>Birth Date:</th>
+                                <td id="modalUserBirthDate"></td>
+                            </tr>
+                            <tr>
+                                <th>Occupation:</th>
+                                <td id="modalUserOccupation"></td>
+                            </tr>
+                            <tr>
+                                <th>Marital Status:</th>
+                                <td id="modalUserMaritalStatus"></td>
+                            </tr>
+                            <tr>
+                                <th>Pronouns:</th>
+                                <td id="modalUserPronouns"></td>
+                            </tr>
+                            <tr>
+                                <th>Has Adopted Before:</th>
+                                <td id="modalHasAdoptedBefore"></td>
+                            </tr>
+                            <tr>
+                                <th>Adopting for Another:</th>
+                                <td id="modalIsAdoptingForAnother"></td>
+                            </tr>
+                            <tr>
+                                <th>Pet Preference:</th>
+                                <td id="modalPetPreference"></td>
+                            </tr>
+                            <tr>
+                                <th>Pet Name:</th>
+                                <td id="modalPetName"></td>
+                            </tr>
+                            <tr>
+                                <th>Pet Type:</th>
+                                <td id="modalPetType"></td>
+                            </tr>
+                            <tr>
+                                <th>Living Type:</th>
+                                <td id="modalLivingType"></td>
+                            </tr>
+                            <tr>
+                                <th>Is Renting:</th>
+                                <td id="modalIsRenting"></td>
+                            </tr>
+                            <tr>
+                                <th>Household Members:</th>
+                                <td id="modalHouseholdMembers"></td>
+                            </tr>
+                            <tr>
+                                <th>Status:</th>
+                                <td id="modalStatus"></td>
+                            </tr>
+                            <tr>
+                                <th>Request Date:</th>
+                                <td id="modalRequestDate"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<script>
+    function viewAdoptionRequest(userName, userEmail, userPhone, userAddress, birthDate,
+                                 occupation, maritalStatus, pronouns, hasAdoptedBefore,
+                                 isAdoptingForAnother, petPreference, petName, petType,
+                                 livingType, isRenting, householdMembers, status, requestDate) {
+
+        // Populate modal with request details
+        document.getElementById("modalUserName").innerText = userName;
+        document.getElementById("modalUserEmail").innerText = userEmail;
+        document.getElementById("modalUserPhone").innerText = userPhone;
+        document.getElementById("modalUserAddress").innerText = userAddress;
+        document.getElementById("modalUserBirthDate").innerText = birthDate;
+        document.getElementById("modalUserOccupation").innerText = occupation;
+        document.getElementById("modalUserMaritalStatus").innerText = maritalStatus;
+        document.getElementById("modalUserPronouns").innerText = pronouns;
+        document.getElementById("modalHasAdoptedBefore").innerText = hasAdoptedBefore === "True" ? "Yes" : "No";
+        document.getElementById("modalIsAdoptingForAnother").innerText = isAdoptingForAnother === "True" ? "Yes" : "No";
+        document.getElementById("modalPetPreference").innerText = petPreference;
+        document.getElementById("modalPetName").innerText = petName;
+        document.getElementById("modalPetType").innerText = petType;
+        document.getElementById("modalLivingType").innerText = livingType;
+        document.getElementById("modalIsRenting").innerText = isRenting === "True" ? "Yes" : "No";
+        document.getElementById("modalHouseholdMembers").innerText = householdMembers;
+        document.getElementById("modalStatus").innerText = status;
+        document.getElementById("modalRequestDate").innerText = requestDate;
+
+        // Show the modal
+        var modal = new bootstrap.Modal(document.getElementById('adoptionRequestModal'));
+        modal.show();
+    }
+</script>

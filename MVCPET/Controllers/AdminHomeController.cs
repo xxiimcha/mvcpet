@@ -16,12 +16,10 @@ namespace MVCPET.Controllers
         public async Task<IActionResult> EvaluatorsDashboard()
         {
             var adoptionRequests = await _context.AdoptionRequests
-                .Include(ar => ar.Pet)   // Ensures pet data is loaded
-                .Include(ar => ar.User)  // Ensures user data is loaded
+                .Include(ar => ar.Pet)   // Ensure pet data is loaded
                 .ToListAsync();
 
-            // Ensure that Model is always passed to the view
-            return View(adoptionRequests ?? new List<AdoptionRequest>());
+            return View(adoptionRequests);
         }
 
         public IActionResult AdoptionRequestAdmin()
