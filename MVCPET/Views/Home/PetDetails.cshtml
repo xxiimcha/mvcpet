@@ -1,4 +1,5 @@
-﻿@model dynamic
+﻿@model Pet
+
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -80,7 +81,17 @@
 
                     @if (Model.IsAdopted == false)
                     {
-                        <button class="btn custom-btn" data-bs-toggle="modal" data-bs-target="#adoptNowModal">Adopt Now!</button>
+                        @if (Context.Session.GetInt32("UserId") != null)
+                        {
+                            <!-- If User is Logged in, Redirect to Adoption Process -->
+                            <a href="@Url.Action("PetForm", "Home", new { petId = Model.Id })" class="btn btn-primary">Adopt Now</a>
+                        }
+                        else
+                        {
+                            <!-- If User is NOT Logged in, Show Modal -->
+                            <button class="btn custom-btn" data-bs-toggle="modal" data-bs-target="#adoptNowModal">Adopt Now!</button>
+                        }
+
                     }
                 </div>
 
@@ -89,33 +100,34 @@
             <!-- Medical History Section (Hidden Initially) -->
             <div id="medical-history-section" class="hidden">
                 <h5><strong>Medical History</strong></h5>
-                <p><strong>Diagnosis:</strong></p>
-                <ul>
-                    <li>[Diagnosis Name]</li>
-                    <li>[Diagnosis Name]</li>
-                </ul>
-                <p><strong>Neuter:</strong> Yes/No</p>
+                <p><strong>Diagnosis:</strong> @Model.Diagnosis</p>
+                <p><strong>Neuter:</strong> @(Model.Neuter ? "Yes" : "No")</p>
+
                 <h6><strong>Vaccine History</strong></h6>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Medicine</th>
+                            <th>Vaccine Type</th>
                             <th>Date</th>
-                            <th>Vaccinated By</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>[Medicine Name]</td>
-                            <td>[Date Vaccinated]</td>
-                            <td>[Veterinarian Doctor]</td>
-                        </tr>
-                        <tr>
-                            <td>[Medicine Name]</td>
-                            <td>[Date Vaccinated]</td>
-                            <td>[Veterinarian Doctor]</td>
-                        </tr>
-                        <!-- Add more rows as needed -->
+                        @if (Model.Vaccinations != null && Model.Vaccinations.Count > 0)
+                        {
+                            @foreach (var vaccine in Model.Vaccinations)
+                            {
+                                <tr>
+                                    <td>@vaccine.VaccineType</td>
+                                    <td>@vaccine.VaccineDate.ToString("yyyy-MM-dd")</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="2">No vaccination records available.</td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
                 <div class="d-grid gap-2">
@@ -123,6 +135,7 @@
                     <button class="btn custom-btn" data-bs-toggle="modal" data-bs-target="#adoptNowModal">Adopt Now!</button>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

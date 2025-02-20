@@ -46,7 +46,7 @@ namespace MVCPET.Controllers
                 return Json(new { success = false, message = "Email and Password are required." });
             }
 
-            // Hash the entered password
+            // Hash the entered password for security
             string hashedPassword = HashPassword(model.Password);
 
             // Check if user exists in the database
@@ -57,15 +57,32 @@ namespace MVCPET.Controllers
                 return Json(new { success = false, message = "Invalid Email or Password." });
             }
 
-            // Store user session
-            HttpContext.Session.SetInt32("UserId", user.Id);
-            HttpContext.Session.SetString("UserName", user.Name);
-            HttpContext.Session.SetString("UserRole", user.Role);
+            try
+            {
+                // Store user session
+                HttpContext.Session.SetInt32("UserId", user.Id);
+                HttpContext.Session.SetString("UserName", user.Name);
+                HttpContext.Session.SetString("UserRole", user.Role);
 
-            // Redirect based on user role
-            string redirectUrl = user.Role == "Admin" ? "/Admin/PetDetailAdmin" : "/Home/Index";
+                // Determine redirect URL based on role
+                string role = user.Role?.ToLower(); // Handle potential null roles
+                string redirectUrl = role switch
+                {
+                    "admin" => "/Admin/PetDetailAdmin",
+                    "evaluator" => "/Evaluator/Dashboard",
+                    "user" => "/Home/Index",
+                    _ => "/Home/Index" // Default redirect
+                };
 
-            return Json(new { success = true, message = "Login successful!", redirectUrl = redirectUrl });
+                return Json(new { success = true, message = "Login successful!", redirectUrl = redirectUrl });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Session Error: {ex.Message}");
+
+                // Ensure the function always returns a value
+                return Json(new { success = false, message = "An error occurred while logging in. Please try again." });
+            }
         }
 
         private string HashPassword(string password)

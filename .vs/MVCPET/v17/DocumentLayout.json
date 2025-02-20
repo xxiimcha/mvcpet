@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "F:\\SYSTEMS\\mvcpet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\views\\admin\\evaluatorsdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\views\\admin\\evaluatorsdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\views\\home\\petform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\views\\home\\petform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\controllers\\adminhomecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\controllers\\adminhomecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\views\\shared\\_petmanager.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\views\\shared\\_petmanager.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\models\\adoptionrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\models\\adoptionrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\controllers\\adoptioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\controllers\\adoptioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\views\\home\\petdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\views\\home\\petdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\systems\\mvcpet\\mvcpet\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,41 +42,80 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EvaluatorsDashboard.cshtml",
-              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Views\\Admin\\EvaluatorsDashboard.cshtml",
-              "RelativeDocumentMoniker": "MVCPET\\Views\\Admin\\EvaluatorsDashboard.cshtml",
-              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Views\\Admin\\EvaluatorsDashboard.cshtml",
-              "RelativeToolTip": "MVCPET\\Views\\Admin\\EvaluatorsDashboard.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-20T01:55:44.285Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AdminHomeController.cs",
-              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Controllers\\AdminHomeController.cs",
-              "RelativeDocumentMoniker": "MVCPET\\Controllers\\AdminHomeController.cs",
-              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Controllers\\AdminHomeController.cs",
-              "RelativeToolTip": "MVCPET\\Controllers\\AdminHomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "AdoptionController.cs",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Controllers\\AdoptionController.cs",
+              "RelativeDocumentMoniker": "MVCPET\\Controllers\\AdoptionController.cs",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Controllers\\AdoptionController.cs",
+              "RelativeToolTip": "MVCPET\\Controllers\\AdoptionController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T01:40:35.895Z",
+              "WhenOpened": "2025-02-20T04:52:47.738Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "_PetManager.cshtml",
-              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Views\\Shared\\_PetManager.cshtml",
-              "RelativeDocumentMoniker": "MVCPET\\Views\\Shared\\_PetManager.cshtml",
-              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Views\\Shared\\_PetManager.cshtml",
-              "RelativeToolTip": "MVCPET\\Views\\Shared\\_PetManager.cshtml",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAAAG0AAAAnAAAAAAAAAA==",
+              "Title": "AdoptionRequest.cs",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Models\\AdoptionRequest.cs",
+              "RelativeDocumentMoniker": "MVCPET\\Models\\AdoptionRequest.cs",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Models\\AdoptionRequest.cs",
+              "RelativeToolTip": "MVCPET\\Models\\AdoptionRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T02:48:24.65Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PetForm.cshtml",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Views\\Home\\PetForm.cshtml",
+              "RelativeDocumentMoniker": "MVCPET\\Views\\Home\\PetForm.cshtml",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Views\\Home\\PetForm.cshtml",
+              "RelativeToolTip": "MVCPET\\Views\\Home\\PetForm.cshtml",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAAIAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-20T01:38:22.411Z",
+              "WhenOpened": "2025-02-20T02:43:22.955Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "MVCPET\\Controllers\\HomeController.cs",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "MVCPET\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAowGYAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T02:24:47.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "MVCPET\\Controllers\\AccountController.cs",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "MVCPET\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAYwFUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T02:11:33.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PetDetails.cshtml",
+              "DocumentMoniker": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Views\\Home\\PetDetails.cshtml",
+              "RelativeDocumentMoniker": "MVCPET\\Views\\Home\\PetDetails.cshtml",
+              "ToolTip": "F:\\SYSTEMS\\mvcpet\\MVCPET\\Views\\Home\\PetDetails.cshtml",
+              "RelativeToolTip": "MVCPET\\Views\\Home\\PetDetails.cshtml",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAgwKEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-20T02:04:09.486Z",
               "EditorCaption": ""
             }
           ]

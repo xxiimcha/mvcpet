@@ -64,11 +64,10 @@ namespace MVCPET.Controllers
             ViewData["Title"] = "Forgot Password";
             return View();
         }
-
         public IActionResult PetDetails(int id)
         {
             var pet = _context.Pets
-                .Include(p => p.Vaccinations)
+                .Include(p => p.Vaccinations) // Ensure Vaccinations are included
                 .FirstOrDefault(p => p.Id == id);
 
             if (pet == null)
@@ -79,17 +78,41 @@ namespace MVCPET.Controllers
             return View(pet);
         }
 
+        public IActionResult PetForm(int petId)
+        {
+            var userId = HttpContext.Session.GetInt32("UserId"); // Retrieve logged-in user ID
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login"); // Redirect if user is not logged in
+            }
+
+            var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+            var pet = _context.Pets.FirstOrDefault(p => p.Id == petId);
+
+            if (pet == null || user == null)
+            {
+                return NotFound("Pet or User not found.");
+            }
+
+            var adoptionRequest = new
+            {
+                Pet = pet,
+                UserName = user.Name, // Ensure the 'Name' field exists in your User model
+                UserAddress = user.Address,
+                UserEmail = user.Email
+            };
+
+            return View(adoptionRequest); // Pass user & pet details to the view
+        }
+
+
         public IActionResult UserProfile()
         {
             ViewData["Title"] = "User Profile";
             return View();
         }
 
-        public IActionResult PetForm()
-        {
-            ViewData["Title"] = "Adoption Form";
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
