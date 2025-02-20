@@ -100,13 +100,14 @@
             </a>
             <ul>
                 <li><a asp-controller="Admin" asp-action="PetDetailAdmin" class="menu-item"><i class="fa-solid fa-paw"></i> Pet Details</a></li>
-                <li><a asp-controller ="Admin" asp-action="AdoptionAdmin" class="menu-item"><i class="fas fa-heart"></i> Adoption</a></li>
                 <li><a asp-controller="Admin" asp-action="AdoptedPetsAdmin" class="menu-item"><i class="fas fa-check"></i> Adopted Pets</a></li>
                 <li><a asp-controller="Admin" asp-action="AddPetsAdmin" class="menu-item"><i class="fas fa-plus"></i> Add Pets</a></li>
-                <li><a asp-controller="Admin" asp-action="EvaluatorsDashboard" class="menu-item"><i class="fas fa-plus"></i> Adoption Request</a></li>
+                <li><a asp-controller="Admin" asp-action="EvaluatorsDashboard" class="menu-item"><i class="fas fa-list"></i> Adoption Request</a></li>
+                <li><a asp-controller="Admin" asp-action="UserManagement" class="menu-item"><i class="fas fa-users"></i> User Management</a></li>
             </ul>
+
             <div class="logout mt-auto">
-                <a href="Logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                <a href="Account/Logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>
         <div class="flex-grow-1 p-3">
