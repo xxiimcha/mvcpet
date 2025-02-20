@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 public class AdoptionController : Controller
 {
@@ -10,23 +11,54 @@ public class AdoptionController : Controller
         _context = context;
     }
 
-    public IActionResult Apply(int petId)
+    [HttpPost]
+    public IActionResult SubmitAdoption([FromBody] AdoptionRequest request)
     {
-        // Fetch pet details
-        var pet = _context.Pets.FirstOrDefault(p => p.Id == petId);
+        if (request == null)
+        {
+            return Json(new { success = false, message = "No data received." });
+        }
+
+        // Fetch Pet and User objects manually from the database
+        var pet = _context.Pets.FirstOrDefault(p => p.Id == request.PetId);
+        var user = _context.Users.FirstOrDefault(u => u.Id == request.UserId);
 
         if (pet == null)
         {
-            return NotFound("Pet not found.");
+            return Json(new { success = false, message = "Invalid PetId: Pet not found." });
         }
 
-        // Create a new adoption request model
-        var adoptionRequest = new AdoptionRequest
+        if (user == null)
         {
-            PetId = pet.Id,
-            Pet = pet // Assign pet details
-        };
+            return Json(new { success = false, message = "Invalid UserId: User not found." });
+        }
 
-        return View("PetForm", adoptionRequest); // Ensure the view is correctly named
+        // ✅ Assign Pet and User objects before saving
+        request.Pet = pet;
+        request.User = user;
+
+        // Set default values for required fields
+        request.Status = "Pending";
+        request.RequestDate = DateTime.Now;
+
+        if (!ModelState.IsValid)
+        {
+            var errors = ModelState.Values.SelectMany(v => v.Errors)
+                                          .Select(e => e.ErrorMessage)
+                                          .ToList();
+            return Json(new { success = false, message = "Validation errors", errors });
+        }
+
+        try
+        {
+            _context.AdoptionRequests.Add(request);
+            _context.SaveChanges();
+            return Json(new { success = true });
+        }
+        catch (Exception ex)
+        {
+            return Json(new { success = false, message = "An error occurred: " + ex.Message });
+        }
     }
+
 }

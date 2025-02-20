@@ -94,10 +94,11 @@ namespace MVCPET.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            // Use an anonymous object as dynamic
+            // Ensure UserId is included in the model
             dynamic model = new
             {
                 Pet = pet,
+                UserId = user.Id,  
                 UserName = user.Name,
                 UserEmail = user.Email,
                 UserAddress = user.Address
@@ -105,6 +106,7 @@ namespace MVCPET.Controllers
 
             return View(model);
         }
+
 
         public IActionResult UserProfile()
         {

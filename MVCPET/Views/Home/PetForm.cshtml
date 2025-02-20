@@ -339,8 +339,8 @@
             </div>
         </form>
     </div>
-
-    <!-- Section 5 -->
+  
+    <!-- Section 5: Submission -->
     <div class="form-section" id="section5">
         <h5 class="form-subtitle">INTERVIEW AND VISITATION</h5>
         <p class="form-description">
@@ -353,17 +353,33 @@
                 <li><strong style="color: #dc3545;">If you do not attend the interview within 3 days, your adoption request will be denied.</strong></li>
             </ul>
         </div>
-        <div class="d-flex justify-content-between">
-            <button style="margin-top: 10px;" type="button" class="btn btn-back" onclick="nextSection(5, 'back')">← </button>
-            <button style="margin-top: 10px; margin-left: 50px;" type="submit" class="btn-submit" href="UserProfile">Submit</button>
-        </div>
+        <form id="adoptionForm">
+            <input type="hidden" id="userId" value="@Model.UserId">
+            <input type="hidden" id="userName" value="@Model.UserName">
+            <input type="hidden" id="userAddress" value="@Model.UserAddress">
+            <input type="hidden" id="userEmail" value="@Model.UserEmail">
+            <input type="hidden" id="petId" value="@Model.Pet.Id">
+
+
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-back" onclick="nextSection(5, 'back')">←</button>
+                <button type="submit" class="btn-submit">Submit</button>
+            </div>
+        </form>
+
     </div>
+
 
 
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let petId = new URLSearchParams(window.location.search).get("petId");
+        document.getElementById("petId").value = petId;
+    });
+
     function nextSection(sectionNumber, direction) {
         // Hide the current section
         const currentSection = document.getElementById('section' + sectionNumber);
@@ -380,4 +396,70 @@
             console.error(`Section ${targetSectionNumber} does not exist.`);
         }
     }
+
+    document.getElementById("adoptionForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // Collecting all required form data
+        let formData = {
+            PetId: parseInt(document.getElementById("petId").value),
+            UserId: parseInt(document.getElementById("userId").value),
+            Name: document.getElementById("userName").value.trim(),
+            Address: document.getElementById("userAddress").value.trim(),
+            Email: document.getElementById("userEmail").value.trim(),
+            Phone: document.getElementById("phone").value.trim(),
+            BirthDate: formatDate(document.getElementById("birthDate").value),
+            Occupation: document.getElementById("occupation").value.trim(),
+            MaritalStatus: document.querySelector("input[name='maritalStatus']:checked")?.value || "Single",
+            Pronouns: document.querySelector("input[name='pronouns']:checked")?.value || "Not specified",
+            HasAdoptedBefore: document.querySelector("input[name='agree']:checked")?.value === "yes",
+            IsAdoptingForAnother: document.querySelector("input[name='reviewed']:checked")?.value === "yes",
+            PetPreference: document.querySelector("input[name='petToAdopt']:checked")?.value || "Not specified",
+            LivingType: document.querySelector("input[name='buildingType']:checked")?.value || "Not specified",
+            IsRenting: document.querySelector("input[name='rentStatus']:checked")?.value === "yes",
+            HouseholdMembers: getHouseholdMembers(),
+            AgreesToInterview: true
+        };
+
+        console.log("Sending Adoption Request:", formData); // Debugging Log
+
+        fetch('/Adoption/SubmitAdoption', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Server Response:", data); // Debugging Log
+            if (data.success) {
+                alert("Adoption request submitted successfully!");
+                window.location.href = "/UserProfile";
+            } else {
+                alert("Submission failed: " + (data.errors ? data.errors.join(', ') : data.message));
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("An error occurred while submitting the form.");
+        });
+    });
+
+    // Function to format date before sending (YYYY-MM-DD)
+    function formatDate(dateString) {
+        if (!dateString) return null;
+        let date = new Date(dateString);
+        return date.toISOString(); // Ensures proper format
+    }
+
+    // Function to collect household members
+    function getHouseholdMembers() {
+        let members = [];
+        document.querySelectorAll("input[type='checkbox']:checked").forEach((checkbox) => {
+            members.push(checkbox.value);
+        });
+        return members.join(", ");
+    }
+
 </script>

@@ -84,7 +84,7 @@
                         @if (Context.Session.GetInt32("UserId") != null)
                         {
                             <!-- If User is Logged in, Redirect to Adoption Process -->
-                            <a href="@Url.Action("PetForm", "Home", new { petId = Model.Id })" class="btn btn-primary">Adopt Now</a>
+                            <a href="@Url.Action("PetForm", "Home", new { petId = Model.Id })" class="btn custom-btn">Adopt Now</a>
                         }
                         else
                         {
