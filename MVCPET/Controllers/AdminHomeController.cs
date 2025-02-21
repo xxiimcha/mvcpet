@@ -63,6 +63,11 @@ namespace MVCPET.Controllers
             return View(await _context.Pets.ToListAsync());
         }
 
+        public ActionResult UserManagement()
+        {
+            var users = _context.Users.ToList(); // Retrieve users from the database
+            return View(users);
+        }
 
         public IActionResult AdoptionAdmin()
         {
