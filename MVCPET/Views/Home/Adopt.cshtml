@@ -1,6 +1,6 @@
 ﻿@model MVCPET.Controllers.HomeController.PetViewModel
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml"; // Corrected path
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <style>
@@ -26,26 +26,6 @@
             outline: none;
         }
 
-    .custom-btn {
-        background-color: #954930;
-        color: #ffffff;
-        border: none;
-    }
-
-        .custom-btn:hover {
-            background-color: #B46449;
-            color: white;
-        }
-
-    /* Tab Content Styling */
-    .tab-content {
-        display: none;
-    }
-
-        .tab-content.active {
-            display: block;
-        }
-
     .img-placeholder {
         width: 200px;
         height: 200px;
@@ -58,8 +38,8 @@
     }
 </style>
 
-<div class="mb-9" id="">
-    <div class="" data-kt-sticky-name="">
+<div class="mb-9">
+    <div class="">
         <div class="">
             <!--begin::Landing hero-->
             <div class="d-flex flex-column flex-center w-100 min-h-350px min-h-lg-500px px-9" style="background: #687451;">
@@ -69,104 +49,66 @@
                     <h1 class="text-white lh-base fw-bold fs-2x fs-lg-3x mb-15"><i>Looking for new companions!</i></h1>
                     <h1 class="text-white">Start your journey to giving a pet their forever home today.</h1>
 
-                    <!-- Search Bar -->
-                    <input type="text" name="name" value="" class="form-control mx-auto mt-5" style="max-width: 400px;" placeholder="Search" />
-
                     <center>
-                        <!-- Buttons Section -->
-                        <div class="d-flex justify-content-center mt-5">
-                            <!-- Adoptees Button -->
-                            <button class="btn custom-btn mx-2" onclick="switchTab('adoptees')">Adoptees</button>
-
-                            <!-- Adopted Button -->
-                            <button class="btn custom-btn mx-2" onclick="switchTab('adopted')">Adopted</button>
-                        </div>
-
                         <!-- Filter Buttons -->
                         <div class="d-flex flex-row justify-content-center">
-                            <button class="filter-button" data-active="true" style="margin-right: 10px;">All</button>
-                            <button class="filter-button" style="margin-right: 10px;">Cat</button>
-                            <button class="filter-button">Dog</button>
+                            <button class="filter-button active" data-filter="all" onclick="filterPets('all')">All</button>
+                            <button class="filter-button" data-filter="cat" onclick="filterPets('cat')">Cat</button>
+                            <button class="filter-button" data-filter="dog" onclick="filterPets('dog')">Dog</button>
                         </div>
                     </center>
                 </div>
                 <!--end::Heading-->
             </div>
             <!--end::Landing hero-->
-            <!--begin::Curve bottom-->
-            <div class="landing-curve landing-dark-color mb-10 mb-lg-20">
-                <svg viewBox="15 12 1470 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 11C3.93573 11.3356 7.85984 11.6689 11.7725 12H1488.16C1492.1 11.6689 1496.04 11.3356 1500 11V12H1488.16C913.668 60.3476 586.282 60.6117 11.7725 12H0V11Z" fill="currentColor" style="color: #687451;"></path>
-                </svg>
-            </div>
-            <!--end::Curve bottom-->
         </div>
     </div>
 </div>
-
 
 <div class="mb-2">
     <div class="container">
-        <!-- Tab Content for Adoptees -->
-        <div class="tab-content adoptees-content active" id="adoptees">
-            <div class="row">
-                @if (Model.Adoptees.Any())
-                {
-                    @foreach (var pet in Model.Adoptees)
-                    {
-                        <div class="col-md-3 text-center pet-card" data-species="@pet.Species.ToLower()">
-                            <a asp-controller="Home" asp-action="PetDetails" asp-route-id="@pet.Id">
-                                <img src="@(!string.IsNullOrEmpty(pet.PhotoPath) ? pet.PhotoPath : "https://via.placeholder.com/200")"
-                                     class="rounded-circle img-fluid" width="200" height="200" />
-                            </a>
-                            <h3 class="mt-2">@pet.Name</h3>
-                            <p>@pet.Species</p>
-                        </div>
-                    }
-                }
-                else
-                {
-                    <p class="text-center">No pets available for adoption.</p>
-                }
-            </div>
-        </div>
-
-        <!-- Tab Content for Adopted Pets -->
-        <div class="tab-content adopted-content" id="adopted">
-            <div class="row">
-                @if (Model.AdoptedPets.Any())
-                {
-                    @foreach (var pet in Model.AdoptedPets)
-                    {
-                        <div class="col-md-3 text-center pet-card" data-species="@pet.Species.ToLower()">
-                            <a asp-controller="Home" asp-action="PetDetails" asp-route-id="@pet.Id">
-                                <img src="@(!string.IsNullOrEmpty(pet.PhotoPath) ? pet.PhotoPath : "https://via.placeholder.com/200")"
-                                     class="rounded-circle img-fluid" width="200" height="200" />
-                            </a>
-                            <h3 class="mt-2">@pet.Name</h3>
-                            <p>@pet.Species</p>
-                        </div>
-                    }
-                }
-                else
-                {
-                    <p class="text-center">No pets have been adopted yet.</p>
-                }
-            </div>
+        <div class="row" id="pet-list">
+            @foreach (var pet in Model.Adoptees.Where(p => !p.IsAdopted)) // Only show pets where isAdopted == false
+            {
+                <div class="col-md-3 text-center pet-card" data-species="@pet.Species.ToLower()">
+                    <a asp-controller="Home" asp-action="PetDetails" asp-route-id="@pet.Id">
+                        <img src="@(!string.IsNullOrEmpty(pet.PhotoPath) ? pet.PhotoPath : "https://via.placeholder.com/200")"
+                             class="rounded-circle img-fluid" width="200" height="200" />
+                    </a>
+                    <h3 class="mt-2">@pet.Name</h3>
+                    <p>@pet.Species</p>
+                </div>
+            }
         </div>
     </div>
 </div>
 
-<div class="mb-0" id=""></div>
-
 <script>
-    function switchTab(tabName) {
-        // Hide all tabs
-        document.querySelectorAll('.tab-content').forEach(tab => {
-            tab.classList.remove('active');
+    function filterPets(species) {
+        // Remove active class from all filter buttons
+        document.querySelectorAll('.filter-button').forEach(button => {
+            button.classList.remove('active');
         });
 
-        // Show the selected tab
-        document.getElementById(tabName).classList.add('active');
+        // Add active class to clicked button
+        document.querySelector(`[data-filter="${species}"]`).classList.add('active');
+
+        // Get all pet cards
+        let pets = document.querySelectorAll('.pet-card');
+
+        // Show or hide pets based on filter
+        pets.forEach(pet => {
+            let petSpecies = pet.getAttribute('data-species');
+            if (species === "all" || petSpecies === species) {
+                pet.style.display = "block";
+            } else {
+                pet.style.display = "none";
+            }
+        });
     }
+
+    // Default filter to 'All' on page load
+    document.addEventListener("DOMContentLoaded", function () {
+        filterPets('all');
+    });
 </script>
