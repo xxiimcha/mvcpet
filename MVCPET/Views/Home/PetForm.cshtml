@@ -435,7 +435,7 @@
             console.log("Server Response:", data); // Debugging Log
             if (data.success) {
                 alert("Adoption request submitted successfully!");
-                window.location.href = "/UserProfile";
+                window.location.href = "/";
             } else {
                 alert("Submission failed: " + (data.errors ? data.errors.join(', ') : data.message));
             }
