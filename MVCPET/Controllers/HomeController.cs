@@ -176,22 +176,39 @@ namespace MVCPET.Controllers
         {
             ViewData["Title"] = "User Profile";
 
-            // Replace with actual authentication logic to get the logged-in user ID
-            int userId = 1; // Example: Get from session or authentication middleware
+            // Get logged-in user ID from session
+            int? userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account"); // Redirect if not logged in
+            }
 
             var user = _context.Users.FirstOrDefault(u => u.Id == userId);
-            var adoptionRequests = _context.AdoptionRequests
-                .Where(a => a.UserId == userId)
-                .ToList();
-
             if (user == null)
             {
                 return NotFound("User not found");
             }
 
+            // Fetch the latest phone number from the AdoptionRequest table
+            var latestAdoptionRequest = _context.AdoptionRequests
+                .Where(a => a.UserId == userId)
+                .OrderByDescending(a => a.RequestDate) // Get the most recent request
+                .FirstOrDefault();
+
+            string phoneNumber = latestAdoptionRequest?.Phone ?? "N/A"; // Use "N/A" if no phone number is found
+
+            // Fetch all adoption requests for the logged-in user
+            var adoptionRequests = _context.AdoptionRequests
+                .Where(a => a.UserId == userId)
+                .Include(a => a.Pet) // Ensure Pet details are loaded
+                .ToList();
+
+            // Prepare the model
             var model = new AdoptionViewModel
             {
                 User = user,
+                PhoneNumber = phoneNumber, // Include phone number in the model
                 AdoptionRequests = adoptionRequests
             };
 
@@ -213,6 +230,7 @@ namespace MVCPET.Controllers
         public class AdoptionViewModel
         {
             public User User { get; set; }
+            public string PhoneNumber { get; set; } // Add phone number field
             public List<AdoptionRequest> AdoptionRequests { get; set; }
         }
     }

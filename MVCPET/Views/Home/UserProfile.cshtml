@@ -100,11 +100,11 @@
             <h2>@Model.User.Name</h2>
             <div class="details">
                 <p>@Model.User.Email</p>
-                <p>@Model.User.Name</p>
+                <p>@Model.PhoneNumber</p> <!-- Now using phone number from AdoptionRequest table -->
             </div>
         </div>
 
-        <!-- Table -->
+        <!-- Table to Display Adoption Requests -->
         <table class="table text-white">
             <thead>
                 <tr>
@@ -119,9 +119,9 @@
                 @foreach (var request in Model.AdoptionRequests)
                 {
                     <tr>
-                        <td>@request.Schedule.ToString("MMM d 'at' h:mmtt - h:mmtt")</td>
-                        <td>@request.Species</td>
-                        <td>@request.PetName</td>
+                        <td>@request.RequestDate.ToString("MMM d, yyyy")</td>
+                        <td>@request.Pet.Species</td>
+                        <td>@request.Pet.Name</td>
                         <td>
                             @if (request.Status == "Pending")
                             {
@@ -137,7 +137,7 @@
                             }
                         </td>
                         <td>
-                            @if (request.Status != "Cancelled")
+                            @if (request.Status == "Pending")
                             {
                                 <button class="delete-btn" data-bs-toggle="modal" data-bs-target="#cancelAdoptionModal" data-id="@request.Id">
                                     <i class="bi bi-trash"></i>
@@ -164,10 +164,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                <form method="post" asp-action="CancelAdoption" asp-controller="Adoption">
-                    <input type="hidden" name="requestId" id="cancelRequestId">
-                    <button type="submit" class="btn btn-danger">Yes</button>
-                </form>
+                <button type="button" class="btn btn-danger" id="confirmCancelAdoption">Yes</button>
             </div>
         </div>
     </div>
@@ -175,11 +172,34 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        let requestIdToCancel = null;
+
+        // Capture the request ID when cancel button is clicked
         document.querySelectorAll(".delete-btn").forEach(button => {
             button.addEventListener("click", function () {
-                let requestId = this.getAttribute("data-id");
-                document.getElementById("cancelRequestId").value = requestId;
+                requestIdToCancel = this.getAttribute("data-id");
             });
+        });
+
+        // Confirm cancellation and send AJAX request
+        document.getElementById("confirmCancelAdoption").addEventListener("click", function () {
+            if (requestIdToCancel) {
+                fetch('/Adoption/CancelAdoption', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({ requestId: requestIdToCancel })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Adoption request canceled successfully.");
+                        location.reload(); // Refresh page
+                    } else {
+                        alert("Error: " + data.message);
+                    }
+                })
+                .catch(error => console.error("Error:", error));
+            }
         });
     });
 </script>

@@ -118,6 +118,46 @@ public class AdoptionController : Controller
         return Json(new { success = true });
     }
 
+    [HttpPost]
+    public async Task<IActionResult> CancelAdoption(int requestId)
+    {
+        var request = await _context.AdoptionRequests
+                                    .Include(a => a.Pet)
+                                    .Include(a => a.User) // Ensure User is included for email
+                                    .FirstOrDefaultAsync(a => a.Id == requestId);
+
+        if (request == null)
+        {
+            return Json(new { success = false, message = "Adoption request not found." });
+        }
+
+        if (request.Status != "Pending")
+        {
+            return Json(new { success = false, message = "Only pending requests can be canceled." });
+        }
+
+        // Mark as canceled
+        request.Status = "Cancelled";
+
+        // Make pet available again if it was reserved
+        if (request.Pet != null)
+        {
+            request.Pet.IsAdopted = false;
+        }
+
+        await _context.SaveChangesAsync();
+
+        // Send email notification
+        SendEmailNotification(request.User.Email, "Adoption Request Canceled",
+            GetEmailTemplate("Your adoption request has been canceled.",
+            $"Hello {request.User.Name},<br><br>" +
+            $"You have successfully canceled your adoption request for <b>{request.Pet.Name}</b>.<br><br>" +
+            $"If you have any questions, please contact our support team.<br><br>" +
+            $"Best regards,<br><b>Second Chances Team</b>"));
+
+        return Json(new { success = true, message = "Adoption request has been canceled." });
+    }
+
     // 🔹 SMTP Email Notification Function
     private void SendEmailNotification(string toEmail, string subject, string body)
     {
