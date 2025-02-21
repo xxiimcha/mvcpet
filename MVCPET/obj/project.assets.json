@@ -4773,6 +4773,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "BCrypt.Net-Next >= 4.0.3",
+      "Microsoft.EntityFrameworkCore >= 9.0.2",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.2",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.2"
     ]
@@ -4784,11 +4785,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Commissions\\mvcpet\\MVCPET\\MVCPET.csproj",
+      "projectUniqueName": "F:\\Commissions\\MVCPET\\MVCPET\\MVCPET.csproj",
       "projectName": "MVCPET",
-      "projectPath": "F:\\Commissions\\mvcpet\\MVCPET\\MVCPET.csproj",
+      "projectPath": "F:\\Commissions\\MVCPET\\MVCPET\\MVCPET.csproj",
       "packagesPath": "C:\\Users\\cha\\.nuget\\packages\\",
-      "outputPath": "F:\\Commissions\\mvcpet\\MVCPET\\obj\\",
+      "outputPath": "F:\\Commissions\\MVCPET\\MVCPET\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4831,6 +4832,10 @@
           "BCrypt.Net-Next": {
             "target": "Package",
             "version": "[4.0.3, )"
+          },
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[9.0.2, )"
           },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",

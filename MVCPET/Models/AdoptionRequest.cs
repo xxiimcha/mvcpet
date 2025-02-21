@@ -68,4 +68,7 @@ public class AdoptionRequest
 
     [Required]
     public bool AgreesToInterview { get; set; }
+
+    [MaxLength(500)]
+    public string? RejectionReason { get; set; }
 }

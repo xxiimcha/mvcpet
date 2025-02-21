@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
-
+using System.Text.Json;
 public class AdoptionController : Controller
 {
     private readonly ApplicationDbContext _context;
@@ -70,11 +70,11 @@ public class AdoptionController : Controller
         request.Status = "Approved";
         _context.SaveChanges();
 
-        return Json(new { success = true, message = "Adoption request approved." });
+        return Json(new { success = true });
     }
 
     [HttpPost]
-    public IActionResult RejectRequest(int id, string reason)
+    public IActionResult RejectRequest(int id, [FromBody] JsonElement data)
     {
         var request = _context.AdoptionRequests.FirstOrDefault(r => r.Id == id);
         if (request == null)
@@ -82,10 +82,17 @@ public class AdoptionController : Controller
             return Json(new { success = false, message = "Request not found." });
         }
 
+        if (!data.TryGetProperty("reason", out JsonElement reasonElement) || reasonElement.GetString() == null)
+        {
+            return Json(new { success = false, message = "Rejection reason is required." });
+        }
+
+        string rejectionReason = reasonElement.GetString();
+
         request.Status = "Rejected";
-        request.RejectionReason = reason;
+        request.RejectionReason = rejectionReason;
         _context.SaveChanges();
 
-        return Json(new { success = true, message = "Adoption request rejected." });
+        return Json(new { success = true });
     }
 }

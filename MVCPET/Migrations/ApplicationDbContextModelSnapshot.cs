@@ -97,6 +97,10 @@ namespace MVCPET.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("RejectionReason")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.Property<DateTime>("RequestDate")
                         .HasColumnType("datetime2");
 
