@@ -25,6 +25,7 @@
         background-color: #FFFAF2; /* Set form background color */
         height: 700px; /* Increase height of the form container */
         padding: 30px 20px; /* Add padding for more space */
+        overflow-y: auto
     }
 
     /* Add outline color and text color for text inputs */
@@ -143,17 +144,18 @@
 
             <div class="row">
                 <div class="col-md-4 mb-3">
-                    <label for="Name" class="form-label">Enter Pet Name</label>
+                    <label for="Name" class="form-label">Enter Pet Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="Name" placeholder="Pet Name" pattern="[A-Za-z\s]+" title="Only alphabets are allowed" required>
                     <div class="invalid-feedback">Pet name is required and should only contain letters.</div>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <label for="Age" class="form-label">Enter Pet Age</label>
-                    <input type="number" class="form-control" name="Age" placeholder="Pet Age" required>
+                    <label for="Age" class="form-label">Enter Pet Age <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="Age" placeholder="e.g., 2 years 3 months" required>
                     <div class="invalid-feedback">Pet age is required.</div>
                 </div>
+
                 <div class="col-md-4 mb-3">
-                    <label for="Color" class="form-label">Pet Color</label>
+                    <label for="Color" class="form-label">Pet Color <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="Color" placeholder="Pet Color" pattern="[A-Za-z\s]+" title="Only alphabets are allowed" required>
                     <div class="invalid-feedback">Pet color is required and should only contain letters.</div>
                 </div>
@@ -161,17 +163,31 @@
 
             <div class="row">
                 <div class="col-md-4 mb-3">
-                    <label for="Species" class="form-label">Species</label>
-                    <input type="text" class="form-control" name="Species" placeholder="Species" pattern="[A-Za-z\s]+" title="Only alphabets are allowed" required>
-                    <div class="invalid-feedback">Species is required and should only contain letters.</div>
+                    <label for="Species" class="form-label">Species <span class="text-danger">*</span></label>
+                    <select class="form-control" name="Species" required>
+                        <option value="" disabled selected>Select species</option>
+                        <option value="Cat">Cat</option>
+                        <option value="Dog">Dog</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a species.</div>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <label for="Temperament" class="form-label">Temperament</label>
+                    <label for="Sex" class="form-label">Sex <span class="text-danger">*</span></label>
+                    <select class="form-control" name="Sex" required>
+                        <option value="" disabled selected>Select Sex</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a species.</div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <<label for="Temperament" class="form-label">Temperament <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="Temperament" placeholder="Temperament" pattern="[A-Za-z\s]+" title="Only alphabets are allowed" required>
                     <div class="invalid-feedback">Temperament is required and should only contain letters.</div>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <label for="Weight" class="form-label">Weight (kg)</label>
+                    <label for="Weight" class="form-label">Weight (kg) <span class="text-danger">*</span></label>
                     <input type="number" step="0.1" class="form-control" name="Weight" placeholder="Weight" required>
                     <div class="invalid-feedback">Weight is required.</div>
                 </div>
@@ -179,7 +195,7 @@
 
             <div class="row">
                 <div class="col-md-4 mb-3">
-                    <label for="Vaccinated" class="form-label">Vaccinated?</label>
+                    <label for="Vaccinated" class="form-label">Vaccinated? <span class="text-danger">*</span></label>
                     <select class="form-select" name="Vaccinated" required>
                         <option value="" disabled selected>Select an option</option>
                         <option value="true">Yes</option>
@@ -188,7 +204,7 @@
                     <div class="invalid-feedback">Please select the vaccination status.</div>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <label for="Neuter" class="form-label">Neutered?</label>
+                    <label for="Neuter" class="form-label">Neutered? <span class="text-danger">*</span></label>
                     <select class="form-select" name="Neuter" required>
                         <option value="" disabled selected>Select an option</option>
                         <option value="true">Yes</option>
@@ -197,7 +213,7 @@
                     <div class="invalid-feedback">Please select if the pet is neutered.</div>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <label for="Diagnosis" class="form-label">Diagnosis</label>
+                    <label for="Diagnosis" class="form-label">Diagnosis <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" name="Diagnosis" placeholder="Enter diagnosis" required>
                     <div class="invalid-feedback">Diagnosis is required.</div>
                 </div>
@@ -213,7 +229,6 @@
                         <div class="invalid-feedback">Vaccine type is required.</div>
                     </div>
                     <div class="col-md-5 mb-3">
-                        <label for="VaccineDate" class="form-label">Vaccine Date</label>
                         <input type="date" class="form-control" name="VaccineDate[]" required>
                         <div class="invalid-feedback">Vaccine date is required.</div>
                     </div>
