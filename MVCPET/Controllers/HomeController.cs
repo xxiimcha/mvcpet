@@ -3,9 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MVCPET.Models;
 using System.Diagnostics;
+using System.Security.Cryptography;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Text;
 
 namespace MVCPET.Controllers
 {
@@ -64,6 +66,69 @@ namespace MVCPET.Controllers
             ViewData["Title"] = "Forgot Password";
             return View();
         }
+
+
+
+        // Check if email exists
+        [HttpPost] // Change from HttpGet to HttpPost
+        public async Task<IActionResult> CheckEmail([FromBody] CheckEmailRequest request)
+        {
+            var userExists = await _context.Users.AnyAsync(u => u.Email == request.Email);
+            return Json(new { exists = userExists });
+        }
+
+        // Create a simple DTO for JSON handling
+        public class CheckEmailRequest
+        {
+            public string Email { get; set; }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(string email, string password, string NewPassword)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            if (user == null)
+            {
+                TempData["Error"] = "User not found.";
+                return RedirectToAction("ChangePassword");
+            }
+
+            // Hash the entered current password
+            string hashedCurrentPassword = HashPassword(password);
+
+            // Validate current password against stored hashed password
+            if (user.Password != hashedCurrentPassword)
+            {
+                TempData["Error"] = "Incorrect current password.";
+                return RedirectToAction("ChangePassword");
+            }
+
+            // Hash the new password before saving
+            user.Password = HashPassword(NewPassword);
+
+            // Save the changes correctly
+            _context.Users.Update(user); // Explicitly mark the user as updated
+            await _context.SaveChangesAsync(); // Ensure changes are saved
+
+            TempData["Success"] = "Password changed successfully.";
+            return RedirectToAction("Login");
+        }
+
+        // Password Hashing Function (SHA-256)
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2")); // Convert byte to hexadecimal
+                }
+                return builder.ToString();
+            }
+        }
+
         public IActionResult PetDetails(int id)
         {
             var pet = _context.Pets

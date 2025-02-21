@@ -3,24 +3,16 @@
   "WorkspaceRootPath": "F:\\Commissions\\mvcpet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\commissions\\mvcpet\\mvcpet\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\commissions\\mvcpet\\mvcpet\\views\\home\\userprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\views\\home\\userprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\commissions\\mvcpet\\mvcpet\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\commissions\\mvcpet\\mvcpet\\views\\admin\\petdetailadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\views\\admin\\petdetailadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\commissions\\mvcpet\\mvcpet\\views\\home\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\views\\home\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\commissions\\mvcpet\\mvcpet\\views\\home\\petdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\views\\home\\petdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|f:\\commissions\\mvcpet\\mvcpet\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1E426A1-C174-4AC6-8669-C7D24737DEB6}|MVCPET\\MVCPET.csproj|solutionrelative:mvcpet\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,67 +30,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "F:\\Commissions\\mvcpet\\MVCPET\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "MVCPET\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "F:\\Commissions\\mvcpet\\MVCPET\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "MVCPET\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAHYAAAAAAAAAAAAEwIMAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-21T13:48:09.21Z",
+              "DocumentIndex": 2,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "F:\\Commissions\\mvcpet\\MVCPET\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "MVCPET\\Controllers\\AccountController.cs",
+              "ToolTip": "F:\\Commissions\\mvcpet\\MVCPET\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "MVCPET\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAwwFYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T13:53:25.928Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "HomeController.cs",
               "DocumentMoniker": "F:\\Commissions\\mvcpet\\MVCPET\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "MVCPET\\Controllers\\HomeController.cs",
               "ToolTip": "F:\\Commissions\\mvcpet\\MVCPET\\Controllers\\HomeController.cs",
               "RelativeToolTip": "MVCPET\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAHwAAAAAAAAAAAAAAJEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAswGkAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T13:37:11.604Z",
+              "WhenOpened": "2025-02-21T13:52:52.51Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserProfile.cshtml",
-              "DocumentMoniker": "F:\\Commissions\\mvcpet\\MVCPET\\Views\\Home\\UserProfile.cshtml",
-              "RelativeDocumentMoniker": "MVCPET\\Views\\Home\\UserProfile.cshtml",
-              "ToolTip": "F:\\Commissions\\mvcpet\\MVCPET\\Views\\Home\\UserProfile.cshtml",
-              "RelativeToolTip": "MVCPET\\Views\\Home\\UserProfile.cshtml",
-              "ViewState": "AgIAAIUAAAAAAAAAAAAcwLkAAAAAAAAAAAAAAA==",
+              "Title": "ForgotPassword.cshtml",
+              "DocumentMoniker": "F:\\Commissions\\mvcpet\\MVCPET\\Views\\Home\\ForgotPassword.cshtml",
+              "RelativeDocumentMoniker": "MVCPET\\Views\\Home\\ForgotPassword.cshtml",
+              "ToolTip": "F:\\Commissions\\mvcpet\\MVCPET\\Views\\Home\\ForgotPassword.cshtml",
+              "RelativeToolTip": "MVCPET\\Views\\Home\\ForgotPassword.cshtml",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAIwF0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-21T13:28:09.828Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PetDetails.cshtml",
-              "DocumentMoniker": "F:\\Commissions\\mvcpet\\MVCPET\\Views\\Home\\PetDetails.cshtml",
-              "RelativeDocumentMoniker": "MVCPET\\Views\\Home\\PetDetails.cshtml",
-              "ToolTip": "F:\\Commissions\\mvcpet\\MVCPET\\Views\\Home\\PetDetails.cshtml",
-              "RelativeToolTip": "MVCPET\\Views\\Home\\PetDetails.cshtml",
-              "ViewState": "AgIAACkAAAAAAAAAAAApwDsAAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-21T13:22:53.819Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PetDetailAdmin.cshtml",
-              "DocumentMoniker": "F:\\Commissions\\mvcpet\\MVCPET\\Views\\Admin\\PetDetailAdmin.cshtml",
-              "RelativeDocumentMoniker": "MVCPET\\Views\\Admin\\PetDetailAdmin.cshtml",
-              "ToolTip": "F:\\Commissions\\mvcpet\\MVCPET\\Views\\Admin\\PetDetailAdmin.cshtml",
-              "RelativeToolTip": "MVCPET\\Views\\Admin\\PetDetailAdmin.cshtml",
-              "ViewState": "AgIAAGwAAAAAAAAAAAApwG8AAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-21T04:00:56.769Z",
+              "WhenOpened": "2025-02-21T13:50:34.619Z",
               "EditorCaption": ""
             }
           ]
