@@ -107,13 +107,31 @@ namespace MVCPET.Controllers
             return View(model);
         }
 
-
         public IActionResult UserProfile()
         {
             ViewData["Title"] = "User Profile";
-            return View();
-        }
 
+            // Replace with actual authentication logic to get the logged-in user ID
+            int userId = 1; // Example: Get from session or authentication middleware
+
+            var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+            var adoptionRequests = _context.AdoptionRequests
+                .Where(a => a.UserId == userId)
+                .ToList();
+
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
+
+            var model = new AdoptionViewModel
+            {
+                User = user,
+                AdoptionRequests = adoptionRequests
+            };
+
+            return View(model);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -124,6 +142,13 @@ namespace MVCPET.Controllers
         {
             public List<Pet> Adoptees { get; set; }
             public List<Pet> AdoptedPets { get; set; }
+        }
+
+        // ViewModel for User Profile and Adoption Requests
+        public class AdoptionViewModel
+        {
+            public User User { get; set; }
+            public List<AdoptionRequest> AdoptionRequests { get; set; }
         }
     }
 }

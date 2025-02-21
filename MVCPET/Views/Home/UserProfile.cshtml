@@ -1,7 +1,7 @@
-﻿@page
+﻿@model dynamic
 
 @{
-    Layout = "~/Views/Shared/_profile.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <style>
@@ -81,7 +81,6 @@
         }
 </style>
 
-<!-- Curve Bottom -->
 <div class="landing-curve landing-dark-color mb-10 mb-lg-10">
     <svg viewBox="15 12 1470 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 11C3.93573 11.3356 7.85984 11.6689 11.7725 12H1488.16C1492.1 11.6689 1496.04 11.3356 1500 11V12H1488.16C913.668 60.3476 586.282 60.6117 11.7725 12H0V11Z" fill="currentColor" style="color: #687451;"></path>
@@ -98,10 +97,10 @@
 
         <!-- Identification -->
         <div class="profile-header mb-4">
-            <h2>Juan Dela Cruz</h2>
+            <h2>@Model.User.Name</h2>
             <div class="details">
-                <p>someone@example.com</p>
-                <p>63+ (000) 000 000</p>
+                <p>@Model.User.Email</p>
+                <p>@Model.User.Name</p>
             </div>
         </div>
 
@@ -117,40 +116,42 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Jan 1 at 2pm - 4pm</td>
-                    <td>Cat</td>
-                    <td>Yetti</td>
-                    <td><span class="badge status-pending">Pending</span></td>
-                    <td><button class="delete-btn" data-bs-toggle="modal" data-bs-target="#cancelAdoptionModal"><i class="bi bi-trash"></i></button></td>
-                </tr>
-                <tr>
-                    <td>Jan 1 at 2pm - 4pm</td>
-                    <td>Cat</td>
-                    <td>Coco</td>
-                    <td><span class="badge status-approved">Approved</span></td>
-                    <td><button class="delete-btn" data-bs-toggle="modal" data-bs-target="#cancelAdoptionModal"><i class="bi bi-trash"></i></button></td>
-                </tr>
-                <tr>
-                    <td>Jan 1 at 2pm - 4pm</td>
-                    <td>Dog</td>
-                    <td>Leo</td>
-                    <td><span class="badge status-cancelled">Cancelled</span></td>
-                    <!--<td><button class="delete-btn"><i class="bi bi-trash"></i></button></td>-->
-                </tr>
-                <tr>
-                    <td>Jan 1 at 2pm - 4pm</td>
-                    <td>Dog</td>
-                    <td>Kukki</td>
-                    <td><span class="badge status-pending">Pending</span></td>
-                    <td><button class="delete-btn" data-bs-toggle="modal" data-bs-target="#cancelAdoptionModal"><i class="bi bi-trash"></i></button></td>
-                </tr>
+                @foreach (var request in Model.AdoptionRequests)
+                {
+                    <tr>
+                        <td>@request.Schedule.ToString("MMM d 'at' h:mmtt - h:mmtt")</td>
+                        <td>@request.Species</td>
+                        <td>@request.PetName</td>
+                        <td>
+                            @if (request.Status == "Pending")
+                            {
+                                <span class="badge status-pending">Pending</span>
+                            }
+                            else if (request.Status == "Approved")
+                            {
+                                <span class="badge status-approved">Approved</span>
+                            }
+                            else if (request.Status == "Cancelled")
+                            {
+                                <span class="badge status-cancelled">Cancelled</span>
+                            }
+                        </td>
+                        <td>
+                            @if (request.Status != "Cancelled")
+                            {
+                                <button class="delete-btn" data-bs-toggle="modal" data-bs-target="#cancelAdoptionModal" data-id="@request.Id">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            }
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
 </div>
 
-<!-- First Modal: Are you sure you want to cancel this adoption? -->
+<!-- Modal for canceling adoption -->
 <div class="modal fade" id="cancelAdoptionModal" tabindex="-1" aria-labelledby="cancelAdoptionModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -163,28 +164,22 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#adoptionCancelledModal" data-bs-dismiss="modal">Yes</button>
+                <form method="post" asp-action="CancelAdoption" asp-controller="Adoption">
+                    <input type="hidden" name="requestId" id="cancelRequestId">
+                    <button type="submit" class="btn btn-danger">Yes</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Second Modal: Adoption Cancelled -->
-<div class="modal fade" id="adoptionCancelledModal" tabindex="-1" aria-labelledby="adoptionCancelledModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="adoptionCancelledModalLabel">Adoption Cancelled</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Your adoption has been cancelled.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".delete-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                let requestId = this.getAttribute("data-id");
+                document.getElementById("cancelRequestId").value = requestId;
+            });
+        });
+    });
+</script>

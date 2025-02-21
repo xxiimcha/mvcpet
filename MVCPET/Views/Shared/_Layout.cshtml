@@ -127,9 +127,9 @@
 							@if (!string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserName")))
 							{
 								<!-- Show Logged-in User Name -->
-								<span class="btn btn-bg-success text-white" style="background-color: #2d4c3b;">
+								<a asp-controller="Home" asp-action="UserProfile" class="btn btn-bg-success text-white" style="background-color: #2d4c3b; text-decoration: none;">
 									Welcome, @HttpContextAccessor.HttpContext.Session.GetString("UserName")!
-								</span>
+								</a>
 								<a asp-controller="Account" asp-action="Logout" class="btn btn-bg-danger text-white ms-2">Logout</a>
 							}
 							else
