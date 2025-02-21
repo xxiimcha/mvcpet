@@ -80,21 +80,22 @@
     <div class="container mt-10">
         <h1 class="text-start mb-4">Adoptees Table</h1>
 
-        <!-- Filter Bar Section -->
+        <!-- Filter & Search Section -->
         <div class="row mb-4">
-            <div class="col-12">
+            <div class="col-6">
                 <!-- Filter Buttons -->
-                <div class="btn-group" role="group" aria-label="Filter Bar" style="background-color: #00291C; border-radius: 15px">
-                    <button type="button" class="btn text-white" style="background-color: #00291C; border: none;">Filter by</button>
-                    <button type="button" class="btn text-white" style="background-color: #00291C; border: none;">Date</button>
-                    <button type="button" class="btn text-white" style="background-color: #00291C; border: none;">Species</button>
-                    <button type="button" class="btn text-white" style="background-color: #00291C; border: none;">Status</button>
+                <div class="btn-group" role="group" aria-label="Filter Bar">
+                    <button class="btn btn-dark filter-button active" data-filter="all" onclick="filterPets('all')">All</button>
+                    <button class="btn btn-dark filter-button" data-filter="dog" onclick="filterPets('dog')">Dog</button>
+                    <button class="btn btn-dark filter-button" data-filter="cat" onclick="filterPets('cat')">Cat</button>
+                    <button class="btn btn-dark filter-button" data-filter="vaccinated" onclick="filterPets('vaccinated')">Vaccinated</button>
                 </div>
+            </div>
 
-                <!-- Search Bar and Button -->
+            <div class="col-6">
+                <!-- Search Bar -->
                 <div class="float-end d-flex">
-                    <input type="text" class="form-control" placeholder="Search"
-                           style="border: 1px solid #00291C; border-radius: 15px 0px 0px 15px ; width: 200px;" />
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search pets by name..." onkeyup="searchPets()" style="border: 1px solid #00291C; border-radius: 15px 0px 0px 15px; width: 200px;">
                     <button class="btn text-white" style="background-color: #00291C; border: none; border-radius: 0px 15px 15px 0px;">
                         <i class="bi bi-search"></i>
                     </button>
@@ -117,10 +118,10 @@
                             <th scope="col" class="fs-4 fw-bold">Pet Image</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="petTableBody">
                         @foreach (var pet in Model)
                         {
-                            <tr>
+                            <tr class="pet-row" data-species="@pet.Species.ToLower()" data-name="@pet.Name.ToLower()" data-vaccinated="@pet.Vaccinated">
                                 <td>@pet.Name</td>
                                 <td>@pet.Age</td>
                                 <td>@pet.Color</td>
@@ -145,3 +146,56 @@
         </div>
     </div>
 </div>
+
+<script>
+    function filterPets(filter) {
+        // Remove active class from all filter buttons
+        document.querySelectorAll('.filter-button').forEach(button => {
+            button.classList.remove('active');
+        });
+
+        // Add active class to clicked button
+        document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+
+        // Get all pet rows
+        let pets = document.querySelectorAll('.pet-row');
+
+        // Show or hide pets based on filter
+        pets.forEach(pet => {
+            let petSpecies = pet.getAttribute('data-species');
+            let isVaccinated = pet.getAttribute('data-vaccinated');
+
+            if (filter === "all" ||
+                petSpecies === filter ||
+                (filter === "vaccinated" && isVaccinated === "True")) {
+                pet.style.display = "";
+            } else {
+                pet.style.display = "none";
+            }
+        });
+
+        // Apply search filter after species filter
+        searchPets();
+    }
+
+    function searchPets() {
+        let searchQuery = document.getElementById("searchInput").value.toLowerCase();
+        let pets = document.querySelectorAll('.pet-row');
+
+        pets.forEach(pet => {
+            let petName = pet.getAttribute('data-name');
+
+            // Only show pet if name matches search and it's not hidden by species filter
+            if (petName.includes(searchQuery) && pet.style.display !== "none") {
+                pet.style.display = "";
+            } else {
+                pet.style.display = "none";
+            }
+        });
+    }
+
+    // Default filter to 'All' on page load
+    document.addEventListener("DOMContentLoaded", function () {
+        filterPets('all');
+    });
+</script>
