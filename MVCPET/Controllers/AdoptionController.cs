@@ -61,13 +61,26 @@ public class AdoptionController : Controller
     [HttpPost]
     public IActionResult ApproveRequest(int id)
     {
-        var request = _context.AdoptionRequests.FirstOrDefault(r => r.Id == id);
+        var request = _context.AdoptionRequests
+                              .Include(r => r.Pet)  // Ensure the Pet is loaded
+                              .FirstOrDefault(r => r.Id == id);
+
         if (request == null)
         {
             return Json(new { success = false, message = "Request not found." });
         }
 
+        if (request.Pet == null)
+        {
+            return Json(new { success = false, message = "Pet associated with this request not found." });
+        }
+
+        // Update adoption request status
         request.Status = "Approved";
+
+        // Mark the pet as adopted
+        request.Pet.IsAdopted = true;
+
         _context.SaveChanges();
 
         return Json(new { success = true });
