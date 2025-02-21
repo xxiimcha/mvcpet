@@ -1,8 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 public class Pet
 {
+    [Key]
     public int Id { get; set; }
+
+    [Required]
     public string Name { get; set; }
+
     public int Age { get; set; }
     public string Species { get; set; }
     public string Temperament { get; set; }
@@ -12,8 +19,13 @@ public class Pet
     public string Description { get; set; }
     public string PhotoPath { get; set; }
     public bool IsAdopted { get; set; }
-    public bool Neuter { get; set; }  // Added Neuter field
-    public string Diagnosis { get; set; } // Added Diagnosis field
+    public bool Neuter { get; set; }
+    public string Diagnosis { get; set; }
+
+    // Foreign Key for Adoption Request
+    public int? AdoptionRequestId { get; set; } // Make it nullable to avoid errors
+    [ForeignKey("AdoptionRequestId")]
+    public virtual AdoptionRequest AdoptionRequest { get; set; }
 
     // Relationship to Vaccination Table
     public List<PetVaccination> Vaccinations { get; set; } = new List<PetVaccination>();

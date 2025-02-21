@@ -1,4 +1,4 @@
-﻿@model List<Pet>
+﻿@model List<MVCPET.Models.PetAdoptionViewModel>
 
 @{
     Layout = "~/Views/Shared/_PetManager.cshtml";
@@ -16,9 +16,9 @@
             color: #00291C;
         }
 
-        /* Change table header color */
         .container table thead {
-            background-color: #687451; /* Header color */
+            background-color: #687451;
+            color: white;
         }
 
     .card-text {
@@ -26,17 +26,21 @@
         font-weight: bold;
     }
 
-    .card i {
-        color: black;
-        font-size: 2.5rem;
+    .modal-body th {
+        width: 40%;
+        color: #6c757d;
+        font-weight: bold;
+        padding-right: 15px;
     }
 
-    .card-body h5 {
-        font-size: 1.5rem;
+    .modal-body td {
+        color: #343a40;
+        font-weight: 500;
     }
 
-    .card-text h2 {
-        font-size: 1.5rem;
+    .img-thumbnail {
+        max-width: 100px;
+        height: auto;
     }
 </style>
 
@@ -48,38 +52,31 @@
             <table class="table table-striped text-center">
                 <thead>
                     <tr>
-                        <th scope="col" class="fs-4 fw-bold">Pet Image</th>
                         <th scope="col" class="fs-4 fw-bold">Pet Name</th>
-                        <th scope="col" class="fs-4 fw-bold">Sex</th>
                         <th scope="col" class="fs-4 fw-bold">Pet Color</th>
                         <th scope="col" class="fs-4 fw-bold">Species</th>
-                        <th scope="col" class="fs-4 fw-bold">Unadopt</th>
-                        <th scope="col" class="fs-4 fw-bold">Delete</th>
+                        <th scope="col" class="fs-4 fw-bold">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var pet in Model)
                     {
                         <tr>
-                            <td>
-                                @if (!string.IsNullOrEmpty(pet.PhotoPath))
-                                {
-                                    <img src="@pet.PhotoPath" class="img-thumbnail" width="50" alt="Pet">
-                                }
-                                else
-                                {
-                                    <img src="https://via.placeholder.com/50" class="img-thumbnail" alt="No Image">
-                                }
-                            </td>
                             <td>@pet.Name</td>
-                            <td>@pet.Age</td>
                             <td>@pet.Color</td>
                             <td>@pet.Species</td>
                             <td>
-                                <button class="btn btn-warning btn-sm unadopt-btn" data-id="@pet.Id">Unadopt</button>
-                            </td>
-                            <td>
-                                <button class="btn btn-danger btn-sm delete-btn" data-id="@pet.Id">Delete</button>
+                                <button class="btn btn-primary btn-sm view-btn"
+                                        data-name="@pet.Name"
+                                        data-color="@pet.Color"
+                                        data-species="@pet.Species"
+                                        data-photo="@pet.PhotoPath"
+                                        data-owner="@pet.OwnerName"
+                                        data-owner-email="@pet.OwnerEmail"
+                                        data-owner-phone="@pet.OwnerPhone"
+                                        data-adoption-date="@(pet.AdoptionDate != null ? pet.AdoptionDate.Value.ToString("yyyy-MM-dd") : "Not Available")">
+                                    View
+                                </button>
                             </td>
                         </tr>
                     }
@@ -89,49 +86,90 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Pet Details Modal -->
+<div class="modal fade" id="petDetailsModal" tabindex="-1" aria-labelledby="petDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="petDetailsModalLabel">Pet & Adoption Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-primary border-bottom pb-2">Pet Information</h6>
+                            <div class="text-center mb-3">
+                                <img id="modalPetImage" src="" class="img-thumbnail" width="150" alt="Pet Image">
+                            </div>
+                            <table class="table table-sm table-borderless">
+                                <tbody>
+                                    <tr><th>Pet Name:</th><td id="modalPetName"></td></tr>
+                                    <tr><th>Color:</th><td id="modalPetColor"></td></tr>
+                                    <tr><th>Species:</th><td id="modalPetSpecies"></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-primary border-bottom pb-2">Adoption Information</h6>
+                            <table class="table table-sm table-borderless">
+                                <tbody>
+                                    <tr><th>Owner Name:</th><td id="modalOwnerName"></td></tr>
+                                    <tr><th>Email:</th><td id="modalOwnerEmail"></td></tr>
+                                    <tr><th>Phone:</th><td id="modalOwnerPhone"></td></tr>
+                                    <tr><th>Adoption Date:</th><td id="modalAdoptionDate"></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
-    $(document).ready(function () {
-        $(".unadopt-btn").click(function () {
-            var petId = $(this).data("id");
+    document.addEventListener("DOMContentLoaded", function () {
+        const viewButtons = document.querySelectorAll(".view-btn");
 
-            $.ajax({
-                url: "/Pets/UnadoptPet",
-                type: "POST",
-                data: { id: petId },
-                success: function (response) {
-                    if (response.success) {
-                        location.reload(); // Refresh the page after successful unadopt
-                    } else {
-                        alert("Error: " + response.message);
-                    }
-                },
-                error: function () {
-                    alert("An error occurred while updating adoption status.");
+        viewButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                // Get pet details from button attributes
+                const petName = this.getAttribute("data-name");
+                const petColor = this.getAttribute("data-color");
+                const petSpecies = this.getAttribute("data-species");
+                const petPhoto = this.getAttribute("data-photo");
+                const ownerName = this.getAttribute("data-owner");
+                const ownerEmail = this.getAttribute("data-owner-email");
+                const ownerPhone = this.getAttribute("data-owner-phone");
+                const adoptionDate = this.getAttribute("data-adoption-date");
+
+                // Populate modal fields
+                document.getElementById("modalPetName").textContent = petName;
+                document.getElementById("modalPetColor").textContent = petColor;
+                document.getElementById("modalPetSpecies").textContent = petSpecies;
+                document.getElementById("modalOwnerName").textContent = ownerName;
+                document.getElementById("modalOwnerEmail").textContent = ownerEmail;
+                document.getElementById("modalOwnerPhone").textContent = ownerPhone;
+                document.getElementById("modalAdoptionDate").textContent = adoptionDate;
+
+                // Set pet image
+                const petImage = document.getElementById("modalPetImage");
+                if (petPhoto && petPhoto.trim() !== "") {
+                    petImage.src = petPhoto;
+                } else {
+                    petImage.src = "https://via.placeholder.com/150"; // Default image if no photo is available
                 }
+
+                // Show modal
+                var petDetailsModal = new bootstrap.Modal(document.getElementById("petDetailsModal"));
+                petDetailsModal.show();
             });
-        });
-
-        $(".delete-btn").click(function () {
-            var petId = $(this).data("id");
-
-            if (confirm("Are you sure you want to delete this pet?")) {
-                $.ajax({
-                    url: "/Pets/DeletePet",
-                    type: "POST",
-                    data: { id: petId },
-                    success: function (response) {
-                        if (response.success) {
-                            location.reload(); // Refresh the page after successful delete
-                        } else {
-                            alert("Error: " + response.message);
-                        }
-                    },
-                    error: function () {
-                        alert("An error occurred while deleting the pet.");
-                    }
-                });
-            }
         });
     });
 </script>
+

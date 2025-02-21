@@ -129,6 +129,9 @@ namespace MVCPET.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("AdoptionRequestId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
@@ -173,6 +176,8 @@ namespace MVCPET.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AdoptionRequestId");
 
                     b.ToTable("Pets");
                 });
@@ -272,6 +277,15 @@ namespace MVCPET.Migrations
                     b.Navigation("Pet");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Pet", b =>
+                {
+                    b.HasOne("AdoptionRequest", "AdoptionRequest")
+                        .WithMany()
+                        .HasForeignKey("AdoptionRequestId");
+
+                    b.Navigation("AdoptionRequest");
                 });
 
             modelBuilder.Entity("PetVaccination", b =>

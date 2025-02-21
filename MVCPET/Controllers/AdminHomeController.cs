@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MVCPET.Models;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MVCPET.Controllers
@@ -65,12 +68,35 @@ namespace MVCPET.Controllers
         {
             return View();
         }
-
-        public async Task<IActionResult> AdoptedPetsAdmin()
+        public IActionResult AdoptedPetsAdmin()
         {
-            var adoptedPets = await _context.Pets
-                                            .Where(p => p.IsAdopted)
-                                            .ToListAsync();
+            var adoptedPets = _context.Pets
+                .Where(p => p.IsAdopted)
+                .Select(p => new PetAdoptionViewModel
+                {
+                    PetId = p.Id,
+                    Name = p.Name,
+                    Color = p.Color,
+                    Species = p.Species,
+                    PhotoPath = p.PhotoPath,
+                    OwnerName = _context.AdoptionRequests
+                        .Where(a => a.PetId == p.Id && a.Status == "Approved")
+                        .Select(a => a.Name)
+                        .FirstOrDefault() ?? "Not Available",
+                    OwnerEmail = _context.AdoptionRequests
+                        .Where(a => a.PetId == p.Id && a.Status == "Approved")
+                        .Select(a => a.Email)
+                        .FirstOrDefault() ?? "Not Available",
+                    OwnerPhone = _context.AdoptionRequests
+                        .Where(a => a.PetId == p.Id && a.Status == "Approved")
+                        .Select(a => a.Phone)
+                        .FirstOrDefault() ?? "Not Available",
+                    AdoptionDate = _context.AdoptionRequests
+                        .Where(a => a.PetId == p.Id && a.Status == "Approved")
+                        .Select(a => (DateTime?)a.RequestDate)
+                        .FirstOrDefault()
+                })
+                .ToList();
 
             return View(adoptedPets);
         }
