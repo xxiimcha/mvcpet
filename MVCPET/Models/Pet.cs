@@ -10,7 +10,7 @@ public class Pet
     [Required]
     public string Name { get; set; }
 
-    public int Age { get; set; }
+    public string Age { get; set; }
     public string Species { get; set; }
     public string Temperament { get; set; }
     public string Color { get; set; }
@@ -21,6 +21,10 @@ public class Pet
     public bool IsAdopted { get; set; }
     public bool Neuter { get; set; }
     public string Diagnosis { get; set; }
+
+    // 🔹 Added Sex Field (Male/Female)
+    [Required]
+    public string Sex { get; set; }  // Example values: "Male", "Female"
 
     // Foreign Key for Adoption Request
     public int? AdoptionRequestId { get; set; } // Make it nullable to avoid errors

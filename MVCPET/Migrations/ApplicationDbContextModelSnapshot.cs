@@ -132,8 +132,9 @@ namespace MVCPET.Migrations
                     b.Property<int?>("AdoptionRequestId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
+                    b.Property<string>("Age")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Color")
                         .IsRequired()
@@ -158,6 +159,10 @@ namespace MVCPET.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("PhotoPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sex")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

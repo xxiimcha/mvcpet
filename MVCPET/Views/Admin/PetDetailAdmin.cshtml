@@ -1,7 +1,6 @@
 ﻿@model List<Pet>
 
 @{
-
     Layout = "~/Views/Shared/_PetManager.cshtml";
 }
 
@@ -17,18 +16,15 @@
             color: #00291C;
         }
 
-        /* Change table header color */
         .container table thead {
-            background-color: #687451; /* Header color */
+            background-color: #687451;
         }
 
-    /* Increase font size for the card numbers */
     .card-text {
-        font-size: 2.5rem; /* Adjust as needed */
+        font-size: 2.5rem;
         font-weight: bold;
     }
 
-    /* Color icons black */
     .card i {
         color: black;
         font-size: 2.5rem;
@@ -80,122 +76,111 @@
     <div class="container mt-10">
         <h1 class="text-start mb-4">Adoptees Table</h1>
 
-        <!-- Filter & Search Section -->
-        <div class="row mb-4">
-            <div class="col-6">
-                <!-- Filter Buttons -->
-                <div class="btn-group" role="group" aria-label="Filter Bar">
-                    <button class="btn btn-dark filter-button active" data-filter="all" onclick="filterPets('all')">All</button>
-                    <button class="btn btn-dark filter-button" data-filter="dog" onclick="filterPets('dog')">Dog</button>
-                    <button class="btn btn-dark filter-button" data-filter="cat" onclick="filterPets('cat')">Cat</button>
-                    <button class="btn btn-dark filter-button" data-filter="vaccinated" onclick="filterPets('vaccinated')">Vaccinated</button>
-                </div>
-            </div>
+        <table class="table table-striped text-center">
+            <thead>
+                <tr>
+                    <th>Pet Name</th>
+                    <th>Age</th>
+                    <th>Color</th>
+                    <th>Vaccinated</th>
+                    <th>Temperament</th>
+                    <th>Species</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var pet in Model)
+                {
+                    <tr>
+                        <td>@pet.Name</td>
+                        <td>@pet.Age</td>
+                        <td>@pet.Color</td>
+                        <td>@(pet.Vaccinated ? "Yes" : "No")</td>
+                        <td>@pet.Temperament</td>
+                        <td>@pet.Species</td>
+                        <td>
+                            <img src="@pet.PhotoPath" class="img-thumbnail" width="50" />
+                        </td>
+                        <td>
+                            <button class="btn btn-warning btn-sm" onclick="editPet(@pet.Id, '@pet.Name', '@pet.Age', '@pet.Color', '@pet.Vaccinated', '@pet.Temperament', '@pet.Species', '@pet.PhotoPath')">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                            <button class="btn btn-danger btn-sm" onclick="deletePet(@pet.Id)">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
-            <div class="col-6">
-                <!-- Search Bar -->
-                <div class="float-end d-flex">
-                    <input type="text" id="searchInput" class="form-control" placeholder="Search pets by name..." onkeyup="searchPets()" style="border: 1px solid #00291C; border-radius: 15px 0px 0px 15px; width: 200px;">
-                    <button class="btn text-white" style="background-color: #00291C; border: none; border-radius: 0px 15px 15px 0px;">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </div>
+<!-- Edit Modal -->
+<div class="modal fade" id="editPetModal" tabindex="-1" aria-labelledby="editPetModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editPetModalLabel">Edit Pet</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-        </div>
-
-        <!-- Table Section -->
-        <div class="row">
-            <div class="col-12">
-                <table class="table table-striped text-center">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="fs-4 fw-bold">Pet Name</th>
-                            <th scope="col" class="fs-4 fw-bold">Age</th>
-                            <th scope="col" class="fs-4 fw-bold">Pet Color</th>
-                            <th scope="col" class="fs-4 fw-bold">Vaccinated</th>
-                            <th scope="col" class="fs-4 fw-bold">Temperament</th>
-                            <th scope="col" class="fs-4 fw-bold">Species</th>
-                            <th scope="col" class="fs-4 fw-bold">Pet Image</th>
-                        </tr>
-                    </thead>
-                    <tbody id="petTableBody">
-                        @foreach (var pet in Model)
-                        {
-                            <tr class="pet-row" data-species="@pet.Species.ToLower()" data-name="@pet.Name.ToLower()" data-vaccinated="@pet.Vaccinated">
-                                <td>@pet.Name</td>
-                                <td>@pet.Age</td>
-                                <td>@pet.Color</td>
-                                <td>@(pet.Vaccinated ? "Yes" : "No")</td>
-                                <td>@pet.Temperament</td>
-                                <td>@pet.Species</td>
-                                <td>
-                                    @if (!string.IsNullOrEmpty(pet.PhotoPath))
-                                    {
-                                        <img src="@pet.PhotoPath" class="img-thumbnail" alt="Pet Image" width="50">
-                                    }
-                                    else
-                                    {
-                                        <img src="https://via.placeholder.com/50" class="img-thumbnail" alt="No Image">
-                                    }
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+            <div class="modal-body">
+                <form id="editPetForm">
+                    <input type="hidden" id="editPetId" name="Id" />
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" id="editPetName" name="Name" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Age</label>
+                        <input type="number" class="form-control" id="editPetAge" name="Age" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    function filterPets(filter) {
-        // Remove active class from all filter buttons
-        document.querySelectorAll('.filter-button').forEach(button => {
-            button.classList.remove('active');
-        });
-
-        // Add active class to clicked button
-        document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
-
-        // Get all pet rows
-        let pets = document.querySelectorAll('.pet-row');
-
-        // Show or hide pets based on filter
-        pets.forEach(pet => {
-            let petSpecies = pet.getAttribute('data-species');
-            let isVaccinated = pet.getAttribute('data-vaccinated');
-
-            if (filter === "all" ||
-                petSpecies === filter ||
-                (filter === "vaccinated" && isVaccinated === "True")) {
-                pet.style.display = "";
-            } else {
-                pet.style.display = "none";
-            }
-        });
-
-        // Apply search filter after species filter
-        searchPets();
+    function editPet(id, name, age, color, vaccinated, temperament, species, photoPath) {
+        document.getElementById("editPetId").value = id;
+        document.getElementById("editPetName").value = name;
+        document.getElementById("editPetAge").value = age;
+        new bootstrap.Modal(document.getElementById("editPetModal")).show();
     }
 
-    function searchPets() {
-        let searchQuery = document.getElementById("searchInput").value.toLowerCase();
-        let pets = document.querySelectorAll('.pet-row');
-
-        pets.forEach(pet => {
-            let petName = pet.getAttribute('data-name');
-
-            // Only show pet if name matches search and it's not hidden by species filter
-            if (petName.includes(searchQuery) && pet.style.display !== "none") {
-                pet.style.display = "";
-            } else {
-                pet.style.display = "none";
-            }
-        });
+    function deletePet(id) {
+        if (confirm("Are you sure you want to delete this pet?")) {
+            fetch('/Pets/Delete/' + id, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert("Error deleting pet.");
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
     }
 
-    // Default filter to 'All' on page load
-    document.addEventListener("DOMContentLoaded", function () {
-        filterPets('all');
+    document.getElementById("editPetForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+
+        fetch('/Pet/Edit', {
+            method: 'POST',
+            body: formData
+        }).then(response => response.json())
+          .then(data => {
+              if (data.success) {
+                  location.reload();
+              } else {
+                  alert("Error updating pet.");
+              }
+          })
+          .catch(error => console.error('Error:', error));
     });
 </script>

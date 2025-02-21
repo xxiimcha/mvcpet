@@ -106,18 +106,16 @@ namespace MVCPET.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeletePet(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var pet = await _context.Pets.FindAsync(id);
             if (pet == null)
-            {
-                return Json(new { success = false, message = "Pet not found." });
-            }
+                return Json(new { success = false });
 
             _context.Pets.Remove(pet);
             await _context.SaveChangesAsync();
 
-            return Json(new { success = true, message = "Pet deleted successfully." });
+            return Json(new { success = true });
         }
     }
 }
